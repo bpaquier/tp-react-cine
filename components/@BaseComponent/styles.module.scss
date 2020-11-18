@@ -1,5 +1,10 @@
+@import '../../styles/theme';
+
 .title {
-  color: teal;
+  color: blue;
+  @include from('md') {
+    color: red;
+  }
 }
 
 .test {
