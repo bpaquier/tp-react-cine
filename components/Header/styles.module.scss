@@ -1,0 +1,215 @@
+@import '../../styles/theme';
+
+$headerHeight: 60px;
+
+.header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: $headerHeight;
+  padding: 0% 5%;
+
+  &.dark {
+    background-color: #000;
+  }
+  &.light {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+.burgerMenu {
+  width: 25px;
+  height: 3px;
+  border-radius: 10px;
+  position: relative;
+  z-index: 10;
+
+  &:before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: translateY(-8px);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: translateY(8px);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &.menuOpen {
+    &.dark {
+      background-color: #000;
+    }
+    &.light {
+      background-color: #fff;
+    }
+
+    &:after {
+      transform: rotate(45deg);
+    }
+    &:before {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &.dark {
+    background-color: #fff;
+
+    &:before {
+      background-color: #fff;
+    }
+    &:after {
+      background-color: #fff;
+    }
+  }
+
+  &.light {
+    background-color: #000;
+
+    &:before {
+      background-color: #000;
+    }
+
+    &:after {
+      background-color: #000;
+    }
+  }
+
+  @include from('md') {
+    display: none;
+  }
+}
+
+.logoAB {
+  height: 32px;
+}
+
+.nav {
+  position: absolute;
+  top: 100%;
+  left: -100%;
+  height: calc(100vh - #{$headerHeight});
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s ease-out;
+
+  &.menuOpen {
+    left: 0;
+  }
+
+  & ul {
+    & li {
+      margin-bottom: 32px;
+    }
+  }
+  &.dark {
+    color: #fff;
+    background-color: #000;
+  }
+  &.light {
+    color: #000;
+    background-color: transparent;
+  }
+
+  @include from('md') {
+    position: static;
+    width: unset;
+    height: 100%;
+
+    & ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & li {
+        margin-right: 24px;
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+
+/* BURGER MENU */
+
+/* TOGGLE THEME BUTTON */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.input {
+  outline: none;
+}
+
+.input:checked + .slider {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+.input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
