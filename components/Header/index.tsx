@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <div className={cx(css.header, theme)}>
+    <header className={cx(css.header, theme)}>
       <div
         className={cx(css.burgerMenu, theme, { menuOpen })}
         onClick={handleClick}
@@ -73,7 +73,7 @@ const Header = () => {
           <span className={cx(css.slider, css.round)}></span>
         </label>
       </div>
-    </div>
+    </header>
   );
 };
 
