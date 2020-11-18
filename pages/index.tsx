@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Card from "../components/Card";
+import Hero from "../components/Hero";
 
 import css from "../styles/Home.module.css";
 

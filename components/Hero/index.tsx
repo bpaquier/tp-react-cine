@@ -13,7 +13,7 @@ export interface Hero {
 const Hero = ( props: Hero) => {
     const { title, subtitle } = props;
   return (
-    <div>
+    <div className={css.hero}>
       <h1 className={cx(css.title, css.test)}>{title}</h1>
       <h3> {subtitle} </h3>
       <SearchBar/>
