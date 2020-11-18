@@ -1,25 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, InputHTMLAttributes } from 'react';
 import Link from 'next/link';
+import themeContext from '../../contexts/theme';
+import setThemeContext from '../../contexts/setTheme';
+
 import classNames from 'classNames/bind';
 import css from './styles.module.scss';
 const cx = classNames.bind(css);
 
-//export interface HeaderProps {
-//  className?: string;
-//}
-
 const Header = () => {
-  const [theme, setTheme] = useState('dark');
+  const theme = useContext(themeContext);
+  const setTheme = useContext(setThemeContext);
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleClick = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
+      //@ts-ignore
       setTheme('light');
     } else {
+      //@ts-ignore
       setTheme('dark');
     }
   };
