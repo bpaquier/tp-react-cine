@@ -11,6 +11,7 @@ interface CardProps {
 }
 
 const Card = ({ className, movie }: CardProps) => {
+
   const { poster_path, original_title, genres, runtime, release_date } = movie;
   const genresList: string = genres.map((genre) => genre.name).join(" · ");
   function getImageFromApi(name: string): string {
@@ -24,6 +25,7 @@ const Card = ({ className, movie }: CardProps) => {
       (hour ? hour + "h" : "") + ("0" + minute).slice(-2) + (hour ? "" : "m")
     );
   }
+
   return (
     <div className={css.card}>
       <img className={css.card__picture} src={getImageFromApi(poster_path)} />
