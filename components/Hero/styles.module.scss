@@ -1,5 +1,19 @@
+@import "../../styles/theme";
+
 .hero {
-  height: 600px;
+  height: 410px;
   width: 100vw;
-  border: 10px solid red;
+  background-image: url("../../public/assets/hero-img.jpg");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    @include font-hero-h-1($color-primary-white, 40px);
+    margin-top: 72px;
+  }
+  h3 {
+    @include font-hero-h-3($color-primary-white, 16px);
+
+    margin-top: 36px;
+  }
 }

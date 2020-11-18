@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classNames/bind';
 import css from './styles.module.scss';
-import SearchBar from "../SearchBar/"
+import SearchBar from "../SearchBar/";
+
 const cx = classNames.bind(css);
 
 
@@ -16,7 +17,7 @@ const Hero = ( props: Hero) => {
     <div className={css.hero}>
       <h1 className={cx(css.title, css.test)}>{title}</h1>
       <h3> {subtitle} </h3>
-      <SearchBar/>
+      <SearchBar placeholder="Title" />
     </div>
   );
 };

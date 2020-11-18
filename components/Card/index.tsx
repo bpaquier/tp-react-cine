@@ -9,7 +9,6 @@ interface CardProps {
 }
 
 const Card = ({ className, movie }: CardProps) => {
-  console.log(movie);
   return (
     <div className={css.card}>
       <div className={css.card__picture}></div>
