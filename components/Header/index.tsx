@@ -64,6 +64,7 @@ const Header = () => {
           <input
             onChange={handleChange}
             type='checkbox'
+            className={css.input}
             checked={theme === 'light' ? true : false}
           />
           <span className={cx(css.slider, css.round)}></span>

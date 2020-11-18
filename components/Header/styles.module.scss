@@ -17,6 +17,7 @@ $headerHeight: 60px;
   }
   &.light {
     background-color: #fff;
+    border-bottom: 1px solid #ccc;
   }
 }
 
@@ -25,6 +26,7 @@ $headerHeight: 60px;
   height: 3px;
   border-radius: 10px;
   position: relative;
+  z-index: 10;
 
   &:before {
     position: absolute;
@@ -52,7 +54,7 @@ $headerHeight: 60px;
     &.dark {
       background-color: #000;
     }
-    .light {
+    &.light {
       background-color: #fff;
     }
 
@@ -77,11 +79,13 @@ $headerHeight: 60px;
 
   &.light {
     background-color: #000;
+
     &:before {
-      background-color: #f000;
+      background-color: #000;
     }
+
     &:after {
-      background-color: #f000;
+      background-color: #000;
     }
   }
 
@@ -183,15 +187,19 @@ $headerHeight: 60px;
   transition: 0.4s;
 }
 
-input:checked + .slider {
-  background-color: #2196f3;
+.input {
+  outline: none;
 }
 
-input:focus + .slider {
+.input:checked + .slider {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.input:focus + .slider {
   box-shadow: 0 0 1px #2196f3;
 }
 
-input:checked + .slider:before {
+.input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
