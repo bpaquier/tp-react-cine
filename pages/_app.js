@@ -7,7 +7,7 @@ import setThemeContext from '../contexts/setTheme.tsx';
 import Header from '../components/Header';
 
 function MyApp({ Component, pageProps }) {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   return (
     <>
       <themeContext.Provider value={theme}>
