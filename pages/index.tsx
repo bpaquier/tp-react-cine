@@ -101,6 +101,7 @@ export default function Home() {
         <a>Go to movies list</a>
       </Link>
       <p>Allo Ciné</p>
+      <Hero title="Welcome to Allo Barbylone" subtitle="What do we watch tonight ?" />
       <Card movie={movie} />
     </>
   );
