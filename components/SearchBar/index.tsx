@@ -1,21 +1,25 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import classNames from 'classNames/bind';
 import css from './styles.module.scss';
 
 
-import searchBarFetch from "../../services/searchBarFetch.js";
 const cx = classNames.bind(css);
 
 export interface SearchBar {
   placeholder?: string;
+  declencheFetch?: (s: string) => void;
 }
 
-const SearchBar = ( props: SearchBar) => {
-   const { placeholder} = props;
-   const [isEmpty, setIsEmpty] = useState(true);
-   const [userInput, setUserInput] = useState("");
+type event = React.ChangeEvent<HTMLInputElement>
 
-   const handleChangeInput = (e) => { 
+
+const SearchBar = ( props: SearchBar) => {
+   const { placeholder, declencheFetch} = props;
+   const [isEmpty, setIsEmpty] = useState(true);
+    const [userInput, setUserInput] = useState("");
+
+
+   const handleChangeInput = (e: event) => { 
      if(e.target.value){
        setIsEmpty(false)
      }
@@ -23,10 +27,11 @@ const SearchBar = ( props: SearchBar) => {
        setIsEmpty(true)
      }
     setUserInput(e.target.value)
-    searchBarFetch(e.target.value);
-    console.log(searchBarFetch(e.target.value));
-    
    }
+
+   useEffect(() => {
+    declencheFetch(userInput)
+   }, [userInput])
    
    const clearUserInput = () => {
     setUserInput("");
