@@ -1,0 +1,25 @@
+@import "../../styles/theme";
+
+.moviesList {
+  padding: 56px 156px;
+  background-color: $color-primary-black;
+
+  &__title {
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: $color-primary-white;
+    font-weight: lighter;
+
+    em {
+      font-weight: bold;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 40px;
+    column-gap: 24px;
+  }
+}

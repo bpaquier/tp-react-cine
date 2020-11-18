@@ -1,4 +1,4 @@
-@import 'mixins';
+@import "mixins";
 
 $screens: (
   xxs: 350px,
@@ -9,3 +9,8 @@ $screens: (
   lg: 1024px,
   xl: 1280px,
 );
+
+$color-primary-white: rgba(248, 248, 248, 1);
+$color-primary-black: rgba(13, 13, 13, 1);
+$color-primary-bluegreen: rgba(92, 183, 195, 1);
+$color-primary-darkgrey: #1b1a1a;
