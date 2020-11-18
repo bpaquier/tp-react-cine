@@ -36,7 +36,11 @@ const Header = () => {
       <img
         className={css.logoAB}
         alt='logo Allo Barbylone'
-        src={theme === 'dark' ? 'icon-ab-dark.png' : 'icon-ab-light.png'}
+        src={
+          theme === 'dark'
+            ? 'assets/icon-ab-dark.png'
+            : 'assets/icon-ab-light.png'
+        }
       />
       <nav className={cx(css.nav, theme, { menuOpen })}>
         <ul>

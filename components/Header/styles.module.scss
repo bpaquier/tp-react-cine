@@ -14,10 +14,10 @@ $headerHeight: 60px;
   padding: 0% 5%;
 
   &.dark {
-    background-color: #000;
+    background-color: $color-primary-black;
   }
   &.light {
-    background-color: #fff;
+    background-color: $color-primary-white;
     border-bottom: 1px solid #ccc;
   }
 }
@@ -53,10 +53,10 @@ $headerHeight: 60px;
 
   &.menuOpen {
     &.dark {
-      background-color: #000;
+      background-color: $color-primary-black;
     }
     &.light {
-      background-color: #fff;
+      background-color: $color-primary-white;
     }
 
     &:after {
@@ -68,25 +68,24 @@ $headerHeight: 60px;
   }
 
   &.dark {
-    background-color: #fff;
+    background-color: $color-primary-white;
 
     &:before {
-      background-color: #fff;
+      background-color: $color-primary-white;
     }
     &:after {
-      background-color: #fff;
+      background-color: $color-primary-white;
     }
   }
 
   &.light {
-    background-color: #000;
+    background-color: $color-primary-black;
 
     &:before {
-      background-color: #000;
+      background-color: $color-primary-black;
     }
-
     &:after {
-      background-color: #000;
+      background-color: $color-primary-black;
     }
   }
 
@@ -120,11 +119,11 @@ $headerHeight: 60px;
     }
   }
   &.dark {
-    color: #fff;
-    background-color: #000;
+    color: $color-primary-white;
+    background-color: $color-primary-black;
   }
   &.light {
-    color: #000;
+    color: $color-primary-black;
     background-color: transparent;
   }
 
@@ -171,21 +170,24 @@ $headerHeight: 60px;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: $color-primary-white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .slider:before {
   position: absolute;
-  content: '';
+  content: url('./../../public/assets/moon.svg');
   height: 26px;
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: $color-primary-bluegreen;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .input {
@@ -193,7 +195,7 @@ $headerHeight: 60px;
 }
 
 .input:checked + .slider {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #4e4e4e;
 }
 
 .input:focus + .slider {
@@ -204,6 +206,7 @@ $headerHeight: 60px;
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
+  content: url('./../../public/assets/sun.svg');
 }
 
 /* Rounded sliders */
