@@ -1,35 +1,40 @@
 import React, { useState } from 'react';
-import Link from "next/link";
+import Link from 'next/link';
 import classNames from 'classNames/bind';
 import css from './styles.module.scss';
 const cx = classNames.bind(css);
-
 
 //export interface HeaderProps {
 //  className?: string;
 //}
 
 const Header = () => {
-
   const [theme, setTheme] = useState('dark');
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleClick = () => {
     setMenuOpen(!menuOpen);
-  }
+  };
 
   const handleChange = (e) => {
     if (e.target.checked) {
-      setTheme('light')
+      setTheme('light');
     } else {
-      setTheme('dark')
+      setTheme('dark');
     }
-  }
+  };
 
   return (
     <div className={cx(css.header, theme)}>
-      <div className={css.burgerMenu} onClick={handleClick}></div>
-      <img className={css.logoAB} alt='logo Allo Barbylone' src={theme === 'dark' ? 'icon-ab-dark.png' : 'icon-ab-light.png'} />
+      <div
+        className={cx(css.burgerMenu, theme, { menuOpen })}
+        onClick={handleClick}
+      ></div>
+      <img
+        className={css.logoAB}
+        alt='logo Allo Barbylone'
+        src={theme === 'dark' ? 'icon-ab-dark.png' : 'icon-ab-light.png'}
+      />
       <nav className={cx(css.nav, theme, { menuOpen })}>
         <ul>
           <li>
@@ -56,11 +61,14 @@ const Header = () => {
       </nav>
       <div>
         <label className={cx(css.switch, theme)}>
-          <input onChange={handleChange} type="checkbox" checked={theme === 'light' ? true : false} />
+          <input
+            onChange={handleChange}
+            type='checkbox'
+            checked={theme === 'light' ? true : false}
+          />
           <span className={cx(css.slider, css.round)}></span>
         </label>
       </div>
-
     </div>
   );
 };

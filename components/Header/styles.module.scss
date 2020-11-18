@@ -13,17 +13,77 @@ $headerHeight: 60px;
   padding: 0% 5%;
 
   &.dark {
-    background-color:#000;
+    background-color: #000;
   }
   &.light {
-    background-color:#fff;
+    background-color: #fff;
   }
 }
 
 .burgerMenu {
-  height: 20px;
-  width: 20px;
-  background-color: green;
+  width: 25px;
+  height: 3px;
+  border-radius: 10px;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: translateY(-8px);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: translateY(8px);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &.menuOpen {
+    &.dark {
+      background-color: #000;
+    }
+    .light {
+      background-color: #fff;
+    }
+
+    &:after {
+      transform: rotate(45deg);
+    }
+    &:before {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &.dark {
+    background-color: #fff;
+
+    &:before {
+      background-color: #fff;
+    }
+    &:after {
+      background-color: #fff;
+    }
+  }
+
+  &.light {
+    background-color: #000;
+    &:before {
+      background-color: #f000;
+    }
+    &:after {
+      background-color: #f000;
+    }
+  }
 
   @include from('md') {
     display: none;
@@ -83,8 +143,6 @@ $headerHeight: 60px;
 
 /* BURGER MENU */
 
-
-
 /* TOGGLE THEME BUTTON */
 .switch {
   position: relative;
@@ -109,28 +167,28 @@ $headerHeight: 60px;
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 26px;
   width: 26px;
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
