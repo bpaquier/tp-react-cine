@@ -12,7 +12,7 @@ interface CardProps {
 
 const Card = ({ className, movie }: CardProps) => {
   const { poster_path, original_title, genres, runtime, release_date } = movie;
-  const genresList: string = genres.map((genre) => genre.name).join(", ");
+  const genresList: string = genres.map((genre) => genre.name).join(" · ");
   function getImageFromApi(name: string): string {
     return `https://image.tmdb.org/t/p/w300${name}`;
   }

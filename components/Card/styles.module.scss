@@ -1,39 +1,12 @@
-$color-primary-white: rgba(248, 248, 248, 1);
-$color-primary-black: rgba(13, 13, 13, 1);
-$color-primary-bluegreen: rgba(92, 183, 195, 1);
-$color-primary-darkgrey: #1b1a1a;
-
-@mixin font-hero-h-1($color, $size) {
-  font-family: "Libre Franklin";
-  font-weight: extrabold;
-  color: $color;
-  font-size: $size;
-}
-@mixin font-hero-h-3($color, $size) {
-  font-family: "Libre Franklin";
-  font-weight: normal;
-  color: $color;
-  font-size: $size;
-}
-@mixin font-hero-txt($color, $size) {
-  font-family: "Libre Franklin";
-  font-weight: normal;
-  color: $color;
-  font-size: $size;
-}
-@mixin font-searchbar-placeholder($color, $size) {
-  font-family: "Libre Franklin";
-  font-weight: medium;
-  color: $color;
-  font-size: $size;
-}
+@import "../../styles/theme";
 
 .card {
+  font-family: "Libre Franklin", sans-serif;
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  width: 300px;
-  height: 470px;
+  width: 274px;
+  height: 468px;
   background-color: $color-primary-darkgrey;
   border-radius: 8px;
 
@@ -57,7 +30,9 @@ $color-primary-darkgrey: #1b1a1a;
   font-size: 16px;
 
   h3 {
-    @include font-hero-h-3($color-primary-white, 20px);
+    font-weight: 700;
+    color: $color-primary-white;
+    font-size: 20px;
     text-transform: uppercase;
   }
 }
@@ -67,4 +42,5 @@ $color-primary-darkgrey: #1b1a1a;
   flex-direction: row;
   justify-content: space-between;
   font-size: 14px;
+  font-weight: 100;
 }
