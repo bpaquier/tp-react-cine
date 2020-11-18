@@ -3,14 +3,14 @@ import classNames from 'classNames/bind';
 import css from './styles.module.scss';
 const cx = classNames.bind(css);
 
-export interface HeaderProps {
-  className?: string;
-}
+//export interface HeaderProps {
+//  className?: string;
+//}
 
-const Header = ({ className }: HeaderProps) => {
+const Header = () => {
   return (
-    <div className={className}>
-      <h1 className={cx(css.title, css.test)}>Base Component</h1>
+    <div>
+      <h1>Header Component</h1>
     </div>
   );
 };
