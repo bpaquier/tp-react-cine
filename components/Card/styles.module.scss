@@ -1,0 +1,70 @@
+$color-primary-white: rgba(248, 248, 248, 1);
+$color-primary-black: rgba(13, 13, 13, 1);
+$color-primary-bluegreen: rgba(92, 183, 195, 1);
+$color-primary-darkgrey: #1b1a1a;
+
+@mixin font-hero-h-1($color, $size) {
+  font-family: "Libre Franklin";
+  font-weight: extrabold;
+  color: $color;
+  font-size: $size;
+}
+@mixin font-hero-h-3($color, $size) {
+  font-family: "Libre Franklin";
+  font-weight: normal;
+  color: $color;
+  font-size: $size;
+}
+@mixin font-hero-txt($color, $size) {
+  font-family: "Libre Franklin";
+  font-weight: normal;
+  color: $color;
+  font-size: $size;
+}
+@mixin font-searchbar-placeholder($color, $size) {
+  font-family: "Libre Franklin";
+  font-weight: medium;
+  color: $color;
+  font-size: $size;
+}
+
+.card {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  width: 300px;
+  height: 470px;
+  background-color: $color-primary-darkgrey;
+  border-radius: 8px;
+
+  &__picture {
+    object-fit: cover;
+    width: 100%;
+    height: 350px;
+  }
+  &__description {
+    flex-grow: 1;
+    padding: 16px;
+  }
+}
+
+.text__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  color: $color-primary-white;
+  font-size: 16px;
+
+  h3 {
+    @include font-hero-h-3($color-primary-white, 20px);
+    text-transform: uppercase;
+  }
+}
+
+.text__informations {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 14px;
+}
