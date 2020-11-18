@@ -1,7 +1,9 @@
 import Link from "next/link";
+
 import { useState } from "react";
 import Card from "../components/Card";
 import Hero from "../components/Hero";
+import MoviesList from "../components/MovieList";
 
 import searchBarFetch from "../services/searchBarFetch.js";
 
@@ -23,7 +25,7 @@ export default function Home() {
       </Link>
       <p>Allo Ciné</p>
       <Hero title="Welcome to Allo Barbylone" subtitle="What do we watch tonight ?" declencheFetch={declencheFetch} />
-      <Card movie={movies} />
-    </> 
+      <MoviesList />
+    </>
   );
 }

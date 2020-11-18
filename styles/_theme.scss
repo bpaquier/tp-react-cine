@@ -13,6 +13,7 @@ $screens: (
 $color-primary-white: rgba(248, 248, 248, 1);
 $color-primary-black: rgba(13, 13, 13, 1);
 $color-primary-bluegreen: rgba(92, 183, 195, 1);
+$color-primary-darkgrey: #1b1a1a;
 
 @mixin font-hero-h-1($color, $size) {
   font-family: "Libre Franklin";
