@@ -32,7 +32,7 @@ Bootstraped with [`create-next-app`](https://github.com/vercel/next.js/tree/cana
 - [sass](https://www.npmjs.com/package/sass)
 - [classnames](https://www.npmjs.com/package/classnames)
 
-## Projet Structure
+## Project Structure
 
 ```
 .
