@@ -114,6 +114,7 @@ $headerHeight: 60px;
   }
 
   & ul {
+    text-align: center;
     & li {
       margin-bottom: 32px;
     }
@@ -124,7 +125,7 @@ $headerHeight: 60px;
   }
   &.light {
     color: $color-primary-black;
-    background-color: transparent;
+    background-color: $color-primary-white;
   }
 
   @include from('md') {
@@ -140,6 +141,10 @@ $headerHeight: 60px;
       & li {
         margin-right: 24px;
         margin-bottom: 0px;
+
+        &:last-child {
+          margin: 0;
+        }
       }
     }
   }
