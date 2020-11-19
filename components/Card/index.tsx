@@ -49,9 +49,9 @@ const Card = ({ className, movie, ratio }: CardProps) => {
                 <div className={css.text__information}>
                   1h12m
                 </div>
-                <div className={css.text__information}>
+                {release_date && <div className={css.text__information}>
                   {release_date.slice(0, 4)}
-                </div>
+                </div>}
               </div>
             </div>
           </div>
