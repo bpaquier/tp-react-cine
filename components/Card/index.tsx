@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import GENRES from '../../services/genres';
 import React, { useContext } from 'react';
 import themeContext from '../../contexts/theme';
@@ -23,6 +25,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
     genre_ids,
     runtime,
     release_date,
+    id,
   } = movie;
 
   const title =
@@ -48,38 +51,41 @@ const Card = ({ className, movie, ratio }: CardProps) => {
   }
 
   return (
-    <Ratio ratio={ratio}>
-      {(className) => (
-        <div className={css.card}>
-          <img
-            className={cx(css.card__picture, theme)}
-            src={
-              poster_path
-                ? getImageFromApi(poster_path)
-                : './assets/poster-not-found-no-text.jpg'
-            }
-            alt={`${movie.title} poster`}
-          />
-          <div className={cx(css.card__description, theme)}>
-            <div className={css.text__container}>
-              <div className={css.titleContainer}>
-                <h3>{title}</h3>
-              </div>
-              <p>{genresList}</p>
-              <div className={css.text__informations}>
-
-                <div className={css.text__information}>
-                  1h12m
+    <Link href={`movie/${id}`}>
+      <a>
+        <Ratio ratio={ratio}>
+          {(className) => (
+            <div className={css.card}>
+              <img
+                className={cx(css.card__picture, theme)}
+                src={
+                  poster_path
+                    ? getImageFromApi(poster_path)
+                    : './assets/poster-not-found-no-text.jpg'
+                }
+                alt={`${movie.title} poster`}
+              />
+              <div className={cx(css.card__description, theme)}>
+                <div className={css.text__container}>
+                  <div className={css.titleContainer}>
+                    <h3>{title}</h3>
+                  </div>
+                  <p>{genresList}</p>
+                  <div className={css.text__informations}>
+                    <div className={css.text__information}>1h12m</div>
+                    {release_date && (
+                      <div className={css.text__information}>
+                        {release_date.slice(0, 4)}
+                      </div>
+                    )}
+                  </div>
                 </div>
-                {release_date && <div className={css.text__information}>
-                  {release_date.slice(0,4)}
-                </div>}
               </div>
             </div>
-          </div>
-        </div>
-      )}
-    </Ratio>
+          )}
+        </Ratio>
+      </a>
+    </Link>
   );
 };
 
