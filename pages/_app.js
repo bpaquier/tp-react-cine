@@ -12,8 +12,10 @@ function MyApp({ Component, pageProps }) {
     <>
       <themeContext.Provider value={theme}>
         <setThemeContext.Provider value={setTheme}>
-          <Header />
-          <Component {...pageProps} />
+          <div className={`appContainer ${theme}`}>
+            <Header />
+            <Component {...pageProps} />
+          </div>
         </setThemeContext.Provider>
       </themeContext.Provider>
     </>

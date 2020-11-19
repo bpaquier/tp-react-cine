@@ -15,27 +15,41 @@ interface MovieListProps {
   userInput?: string;
 }
 
-
-const MoviesList = ({ queryMovies, popularMovies, userInput }: MovieListProps) => {
+const MoviesList = ({
+  queryMovies,
+  popularMovies,
+  userInput,
+}: MovieListProps) => {
   const theme = useContext(themeContext);
   // const MAPMOVIE = queryMovies != null ? queryMovies : popularMovies;
   // console.log(MAPMOVIE);
 
-  const renderAllCards = (movies : any) =>{
-    return movies.map((movie : any) => (
+  const renderAllCards = (movies: any) => {
+    return movies.map((movie: any) => (
       <div className={css.cardContainer}>
         <Card key={movie.id} className={css.moviesList__card} movie={movie} />
       </div>
     ));
-  } 
+  };
 
   return (
     <div className={css.moviesList}>
       <h2 className={cx(css.moviesList__title, theme)}>
-        {!userInput ? (<><em>Most</em> popular</>) : (<><em>Result for</em> "{userInput}"</>)}
+
+        {!userInput ? (
+          <>
+            <em>Most</em> popular
+          </>
+        ) : (
+          <>
+            <em>Result for</em> "{userInput}"
+          </>
+        )}
 
       </h2>
-      <div className={css.moviesList__list}>{renderAllCards(queryMovies || popularMovies)}</div>
+      <div className={css.moviesList__list}>
+        {renderAllCards(queryMovies || popularMovies)}
+      </div>
     </div>
   );
 };
