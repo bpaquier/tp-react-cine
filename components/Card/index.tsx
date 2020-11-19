@@ -30,10 +30,9 @@ const Card = ({ className, movie, ratio }: CardProps) => {
     id,
   } = movie;
 
-  const title =
-    original_title.length > 30
-      ? `${original_title.substr(0, 28)}...`
-      : original_title;
+  const title = (title: string) => {
+    return title.length > 30 ? `${title.substr(0, 28)}...` : title;
+  };
 
   const genresList: string = genre_ids
     .slice(0, 2)
@@ -53,7 +52,6 @@ const Card = ({ className, movie, ratio }: CardProps) => {
   }
 
   return (
-
     <Link href={`movie/${id}`}>
       <a>
         <Ratio ratio={ratio}>
@@ -71,7 +69,11 @@ const Card = ({ className, movie, ratio }: CardProps) => {
               <div className={cx(css.card__description, theme)}>
                 <div className={css.text__container}>
                   <div className={css.titleContainer}>
-                    <h3>{original_title ? original_title : original_name}</h3>
+                    <h3>
+                      {original_title
+                        ? title(original_title)
+                        : title(original_name)}
+                    </h3>
                   </div>
                   <p>{genresList}</p>
                   <div className={css.text__informations}>
