@@ -5,7 +5,7 @@ import { movies } from './utils';
 
 import themeContext from '../../contexts/theme';
 
-import classNames from 'classNames/bind';
+import classNames from 'classnames/bind';
 import css from './styles.module.scss';
 const cx = classNames.bind(css);
 
@@ -27,6 +27,7 @@ const MoviesList = ({
   // console.log(MAPMOVIE);
 
   const renderAllCards = (movies: any) => {
+
 
     if (movies.length > 0) {
       return movies.map((movie: any) => (

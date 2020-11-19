@@ -51,12 +51,19 @@
   width: 90%;
   font-size: 16px;
   margin: 5% 0;
+}
 
+.titleContainer {
+  height: 40px;
+  margin-bottom: 5%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
   h3 {
     font-weight: 700;
     font-size: 20px;
+    max-height: 100%;
     text-transform: uppercase;
-    margin-bottom: 5%;
   }
 }
 

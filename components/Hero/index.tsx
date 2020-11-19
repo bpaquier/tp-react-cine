@@ -1,10 +1,9 @@
 import React from 'react';
-import classNames from 'classNames/bind';
+import classNames from 'classnames/bind';
 import css from './styles.module.scss';
-import SearchBar from "../SearchBar/";
+import SearchBar from '../SearchBar/';
 
 const cx = classNames.bind(css);
-
 
 export interface Hero {
   title?: string;
@@ -14,14 +13,19 @@ export interface Hero {
   setUserInput?: any;
 }
 
-const Hero = ( props: Hero) => {
-    const { title, subtitle, declencheFetch, userInput, setUserInput } = props;
+const Hero = (props: Hero) => {
+  const { title, subtitle, declencheFetch, userInput, setUserInput } = props;
   return (
     <div className={css.hero}>
       <h1 className={cx(css.title, css.test)}>{title}</h1>
       <h3> {subtitle} </h3>
-      <SearchBar userInput={userInput} setUserInput={setUserInput} placeholder="Title" declencheFetch={declencheFetch} />
-    </div> 
+      <SearchBar
+        userInput={userInput}
+        setUserInput={setUserInput}
+        placeholder='Title'
+        declencheFetch={declencheFetch}
+      />
+    </div>
   );
 };
 

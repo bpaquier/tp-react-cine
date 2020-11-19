@@ -3,7 +3,7 @@ import Link from 'next/link';
 import themeContext from '../../contexts/theme';
 import setThemeContext from '../../contexts/setTheme';
 
-import classNames from 'classNames/bind';
+import classNames from 'classnames/bind';
 import css from './styles.module.scss';
 const cx = classNames.bind(css);
 

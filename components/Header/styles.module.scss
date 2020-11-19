@@ -1,6 +1,4 @@
-@import '../../styles/theme';
-
-$headerHeight: 60px;
+@import "../../styles/theme";
 
 .header {
   z-index: 100;
@@ -10,7 +8,7 @@ $headerHeight: 60px;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: $headerHeight;
+  height: $header-height-mobile;
   padding: 0% 5%;
 
   &.dark {
@@ -44,7 +42,7 @@ $headerHeight: 60px;
   &:before {
     position: absolute;
     display: block;
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
     top: 0;
@@ -55,7 +53,7 @@ $headerHeight: 60px;
   &:after {
     position: absolute;
     display: block;
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
     top: 0;
@@ -101,7 +99,7 @@ $headerHeight: 60px;
     }
   }
 
-  @include from('md') {
+  @include from("md") {
     display: none;
   }
 }
@@ -114,7 +112,7 @@ $headerHeight: 60px;
   position: absolute;
   top: 100%;
   left: -100%;
-  height: calc(100vh - #{$headerHeight});
+  height: calc(100vh - #{$header-height-mobile});
   width: 100%;
   display: flex;
   align-items: center;
@@ -142,7 +140,7 @@ $headerHeight: 60px;
     background-color: $color-primary-white;
   }
 
-  @include from('md') {
+  @include from("md") {
     position: static;
     width: unset;
     height: 100%;
@@ -196,7 +194,7 @@ $headerHeight: 60px;
 
 .slider:before {
   position: absolute;
-  content: url('./../../public/assets/moon.svg');
+  content: url("./../../public/assets/moon.svg");
   height: 26px;
   width: 26px;
   left: 4px;
@@ -225,7 +223,7 @@ $headerHeight: 60px;
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-  content: url('./../../public/assets/sun.svg');
+  content: url("./../../public/assets/sun.svg");
 }
 
 /* Rounded sliders */
