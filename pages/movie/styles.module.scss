@@ -169,20 +169,25 @@
   &__infos {
     font-size: 18px;
     font-weight: 300;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     &add {
       display: flex;
       margin-bottom: 24px;
-      & .movie__average {
-        margin-right: 24px;
-        &::before {
-          content: "";
-        }
-      }
       & .movie__budget {
         margin-right: 24px;
       }
     }
+  }
+
+  &__average {
+    margin-right: 24px;
+    display: flex;
+    margin-bottom: 8px;
+  }
+
+  &__star {
+    width: 20px;
+    margin-right: 8px;
   }
 
   &__overview {
