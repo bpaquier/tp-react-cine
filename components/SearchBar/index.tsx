@@ -7,14 +7,16 @@ const cx = classNames.bind(css);
 export interface SearchBar {
   placeholder?: string;
   declencheFetch?: (s: string) => void;
+  userInput?: string;
+  setUserInput?: any;
 }
 
 type event = React.ChangeEvent<HTMLInputElement>;
 
 const SearchBar = (props: SearchBar) => {
-  const { placeholder, declencheFetch } = props;
+  const { placeholder, declencheFetch, setUserInput, userInput } = props;
   const [isEmpty, setIsEmpty] = useState(true);
-  const [userInput, setUserInput] = useState("");
+  
   const [isFocused, setIsFocused] = useState(false);
   const input = useRef(null);
 
@@ -29,7 +31,7 @@ const SearchBar = (props: SearchBar) => {
 
   useEffect(() => {
     declencheFetch(userInput);
-  }, []);
+  }, [userInput]);
 
   useEffect(() => {
     input.current.focus();

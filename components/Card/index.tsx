@@ -1,6 +1,6 @@
+import GENRES from "../../services/genres"
 import React, { useContext } from 'react';
 import themeContext from '../../contexts/theme';
-
 import classNames from 'classNames/bind';
 import css from './styles.module.scss';
 import Ratio from '../Ratio';
@@ -16,10 +16,9 @@ export interface CardProps {
 
 const Card = ({ className, movie, ratio }: CardProps) => {
   const theme = useContext(themeContext);
+  const { poster_path, original_title, genre_ids, runtime, release_date } = movie;
+  const genresList: string = genre_ids.slice(0,2).map((genre_id) => GENRES[genre_id]).join(" · ");
 
-  const { poster_path, original_title, genres, runtime, release_date } = movie;
-
-  const genresList: string = genres.map((genre) => genre.name).join(' · ');
   function getImageFromApi(name: string): string {
     return `https://image.tmdb.org/t/p/w300${name}`;
   }
@@ -33,12 +32,14 @@ const Card = ({ className, movie, ratio }: CardProps) => {
   }
 
   return (
+
     <Ratio ratio={ratio}>
       {(className) => (
         <div className={css.card}>
           <img
             className={cx(css.card__picture, theme)}
             src={getImageFromApi(poster_path)}
+            alt={`${movie.title} poster`}
           />
           <div className={cx(css.card__description, theme)}>
             <div className={css.text__container}>
@@ -46,7 +47,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
               <p>{genresList}</p>
               <div className={css.text__informations}>
                 <div className={css.text__information}>
-                  {minuteToHour(runtime)}
+                  1h12m
                 </div>
                 <div className={css.text__information}>
                   {release_date.slice(0, 4)}

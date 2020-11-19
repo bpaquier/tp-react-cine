@@ -10,23 +10,32 @@ import css from './styles.module.scss';
 const cx = classNames.bind(css);
 
 interface MovieListProps {
-  className?: string;
+  queryMovies?: any;
+  popularMovies?: any;
+  userInput?: string;
 }
 
-const MoviesList = ({ className }: MovieListProps) => {
-  const theme = useContext(themeContext);
 
-  const renderAllCards = movies.map((movie) => (
-    <div className={css.cardContainer}>
-      <Card className={css.moviesList__card} movie={movie} />
-    </div>
-  ));
+const MoviesList = ({ queryMovies, popularMovies, userInput }: MovieListProps) => {
+  const theme = useContext(themeContext);
+  // const MAPMOVIE = queryMovies != null ? queryMovies : popularMovies;
+  // console.log(MAPMOVIE);
+
+  const renderAllCards = (movies : any) =>{
+    return movies.map((movie : any) => (
+      <div className={css.cardContainer}>
+        <Card key={movie.id} className={css.moviesList__card} movie={movie} />
+      </div>
+    ));
+  } 
+
   return (
     <div className={css.moviesList}>
       <h2 className={cx(css.moviesList__title, theme)}>
-        <em>Most</em> popular
+        {!userInput ? (<><em>Most</em> popular</>) : (<><em>Result for</em> "{userInput}"</>)}
+
       </h2>
-      <div className={css.moviesList__list}>{renderAllCards}</div>
+      <div className={css.moviesList__list}>{renderAllCards(queryMovies || popularMovies)}</div>
     </div>
   );
 };
