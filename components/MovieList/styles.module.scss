@@ -14,6 +14,10 @@
     margin-bottom: 40px;
     font-weight: lighter;
 
+    &.dark {
+      color: $color-primary-white;
+    }
+
     em {
       font-weight: bold;
     }

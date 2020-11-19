@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import themeContext from '../../contexts/theme';
+
 import classNames from 'classNames/bind';
 import css from './styles.module.scss';
 import Ratio from '../Ratio';
@@ -13,7 +15,10 @@ export interface CardProps {
 }
 
 const Card = ({ className, movie, ratio }: CardProps) => {
+  const theme = useContext(themeContext);
+
   const { poster_path, original_title, genres, runtime, release_date } = movie;
+
   const genresList: string = genres.map((genre) => genre.name).join(' · ');
   function getImageFromApi(name: string): string {
     return `https://image.tmdb.org/t/p/w300${name}`;
@@ -32,10 +37,10 @@ const Card = ({ className, movie, ratio }: CardProps) => {
       {(className) => (
         <div className={css.card}>
           <img
-            className={css.card__picture}
+            className={cx(css.card__picture, theme)}
             src={getImageFromApi(poster_path)}
           />
-          <div className={css.card__description}>
+          <div className={cx(css.card__description, theme)}>
             <div className={css.text__container}>
               <h3>{original_title}</h3>
               <p>{genresList}</p>

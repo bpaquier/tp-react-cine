@@ -5,7 +5,6 @@
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  background-color: $color-primary-darkgrey;
   border-radius: 8px;
   position: absolute;
   top: 0;
@@ -29,7 +28,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #1b1a1a;
+
+    &.dark {
+      background-color: $color-primary-darkgrey;
+      .text__container {
+        color: $color-primary-white;
+      }
+    }
+    &.light {
+      background-color: $color-primary-white;
+      .text__container {
+        color: $color-primary-darkgrey;
+      }
+    }
   }
 }
 
@@ -39,12 +50,10 @@
   justify-content: space-between;
   height: 70%;
   width: 90%;
-  color: $color-primary-white;
   font-size: 16px;
 
   h3 {
     font-weight: 700;
-    color: $color-primary-white;
     font-size: 20px;
     text-transform: uppercase;
   }
