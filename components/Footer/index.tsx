@@ -1,9 +1,9 @@
-import React, { useState, useContext, InputHTMLAttributes } from "react";
-import Link from "next/link";
-import themeContext from "../../contexts/theme";
+import React, { useState, useContext, InputHTMLAttributes } from 'react';
+import Link from 'next/link';
+import themeContext from '../../contexts/theme';
 
-import classNames from "classNames/bind";
-import css from "./styles.module.scss";
+import classNames from 'classnames/bind';
+import css from './styles.module.scss';
 const cx = classNames.bind(css);
 
 const Footer = () => {
@@ -14,11 +14,11 @@ const Footer = () => {
     <footer className={cx(css.footer, theme)}>
       <img
         className={css.logoAB}
-        alt="logo Allo Barbylone"
+        alt='logo Allo Barbylone'
         src={
-          theme === "dark"
-            ? "assets/icon-ab-dark.png"
-            : "assets/icon-ab-light.png"
+          theme === 'dark'
+            ? 'assets/icon-ab-dark.png'
+            : 'assets/icon-ab-light.png'
         }
       />
       <div className={css.textesMid}>
