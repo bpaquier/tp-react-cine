@@ -12,6 +12,7 @@
   h1 {
     @include font-hero-h-1($color-primary-white, 40px);
     margin-top: 72px;
+    text-align: center;
   }
   h3 {
     @include font-hero-h-3($color-primary-white, 16px);
