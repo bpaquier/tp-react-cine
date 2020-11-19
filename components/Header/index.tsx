@@ -1,15 +1,14 @@
 import React, { useState, useContext, InputHTMLAttributes } from 'react';
 import Link from 'next/link';
 import themeContext from '../../contexts/theme';
-import setThemeContext from '../../contexts/setTheme';
 
 import classNames from 'classnames/bind';
 import css from './styles.module.scss';
 const cx = classNames.bind(css);
 
 const Header = () => {
-  const theme = useContext(themeContext);
-  const setTheme = useContext(setThemeContext);
+  const themecontext = useContext(themeContext);
+  const [theme, setTheme] = themecontext;
 
   const [menuOpen, setMenuOpen] = useState(false);
 

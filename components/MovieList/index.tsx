@@ -20,7 +20,8 @@ const MoviesList = ({
   popularMovies,
   userInput,
 }: MovieListProps) => {
-  const theme = useContext(themeContext);
+  const themecontext = useContext(themeContext);
+  const [theme] = themecontext;
   // const MAPMOVIE = queryMovies != null ? queryMovies : popularMovies;
   // console.log(MAPMOVIE);
 
