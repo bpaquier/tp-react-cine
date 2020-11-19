@@ -1,18 +1,18 @@
-@import '../../styles/theme';
+@import "../../styles/theme";
 
 .moviesList {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 90%;
-  max-width: map-get($screens, 'xl');
+  max-width: map-get($screens, "xl");
   margin: auto;
   margin-top: 40px;
 
   &__title {
     width: 100%;
     text-align: left;
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: "Libre Franklin", sans-serif;
     font-size: 32px;
     margin-bottom: 40px;
     font-weight: lighter;
@@ -29,15 +29,40 @@
   &__list {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 
-    @include from('xs') {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    .errorMessage {
+      white-space: nowrap;
+      font-size: 20px;
+    }
+
+    &.dark {
+      .errorMessage {
+        color: $color-primary-white;
+      }
+    }
+
+    &.light {
+      .errorMessage {
+        color: $color-primary-black;
+      }
     }
   }
 }
 
 .cardContainer {
-  filter: drop-shadow(0px 4px 14px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(0px 4px 20px rgba(43, 43, 43, 0.3));
+  transform: translateX(0px) translateY(0px);
+  transition: transform 0.2s;
+  &:hover {
+    transform: translateX(4px) translateY(-10px);
+    transition: transform 0.4s;
+    &.light {
+      filter: drop-shadow(0px 4px 14px rgba(41, 41, 41, 0.45));
+    }
+    &.dark {
+      filter: drop-shadow(0px 4px 14px rgba(236, 236, 236, 0.2));
+    }
+  }
 }
