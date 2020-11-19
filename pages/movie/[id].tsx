@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import classNames from "classnames/bind";
+
 import css from "./styles.module.scss";
 import { useRouter } from "next/router";
 import getMovieFetch from "../../services/getMovie";
 import Layout from "../../components/Layout";
 import { getImageFromApi, minuteToHour } from "../../services/utils";
+import themeContext from "../../contexts/theme";
+
+const cx = classNames.bind(css);
 
 interface IMovie {
   poster_path?: string;
@@ -34,7 +39,10 @@ const countStars = (rate: number): number[] => {
 
 const Movies = () => {
   const router = useRouter();
+  const themecontext = useContext(themeContext);
+  const [theme] = themecontext;
   const { id } = router.query;
+  console.log(theme);
   const [movie, setMovie] = useState<IMovie>({
     poster_path: "",
     original_title: "",
@@ -104,8 +112,8 @@ const Movies = () => {
   );
 
   return (
-    <Layout>
-      <div className={css.moviePage}>
+    <Layout activePage="movie" title={`Barbylone - ${movie.original_title}`}>
+      <div className={cx(css.moviePage, theme)}>
         <div className={css.movie__informations}>
           <button className={css.movie__backbutton}>BACK</button>
           <div className={css.movie__title}> {movie?.original_title} </div>
@@ -115,9 +123,9 @@ const Movies = () => {
           </div>
           <div className={css.movie__average}>{renderStars}</div>
           <div className={css.movie__infosadd}>
-            <div className={css.movie__budget}>
-              {movie?.budget !== 0 ? newBudget : ""}{" "}
-            </div>
+            {movie?.budget ? (
+              <div className={css.movie__budget}>{newBudget}</div>
+            ) : null}
             <div className={css.movie__release}>
               {movie?.release_date.slice(0, 4)}{" "}
             </div>

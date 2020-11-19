@@ -21,7 +21,7 @@ export default function Home({ data }) {
   }
 
   return (
-    <Layout>
+    <Layout activePage={"home"}>
       <Hero
         title="Welcome to Allo Barbylone"
         subtitle="What are we watching tonight ?"
@@ -29,20 +29,26 @@ export default function Home({ data }) {
         userInput={userInput}
         setUserInput={setUserInput}
       />
-      <MoviesList category={'movie'} userInput={userInput} queryMovies={movies} popularMovies={data} />
+      <MoviesList
+        category={"movie"}
+        userInput={userInput}
+        queryMovies={movies}
+        popularMovies={data}
+      />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
   // Get external data from the file system, API, DB, etc.
-  const data = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=a366c741ebcd23ebb98f75ee1b26fece")
-  const res = await data.json()
+  const data = await fetch(
+    "https://api.themoviedb.org/3/movie/popular?api_key=a366c741ebcd23ebb98f75ee1b26fece"
+  );
+  const res = await data.json();
 
   // The value of the `props` key will be
   //  passed to the `Home` component
   return {
-    props: { data: res.results }
-  }
+    props: { data: res.results },
+  };
 }
-
