@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 import GENRES from '../../services/genres';
 import React, { useContext } from 'react';
@@ -7,9 +7,10 @@ import classNames from 'classnames/bind';
 import css from './styles.module.scss';
 import Ratio from '../Ratio';
 
+
 const cx = classNames.bind(css);
-const API_URL = 'https://api.themoviedb.org/3/search/movie';
-const API_KEY = 'a366c741ebcd23ebb98f75ee1b26fece';
+const API_URL = "https://api.themoviedb.org/3/search/movie";
+const API_KEY = "a366c741ebcd23ebb98f75ee1b26fece";
 
 export interface CardProps {
   className?: string;
@@ -23,7 +24,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
     poster_path,
     original_title,
     genre_ids,
-    runtime,
+    vote_average,
     release_date,
     id,
   } = movie;
@@ -36,7 +37,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
   const genresList: string = genre_ids
     .slice(0, 2)
     .map((genre_id) => GENRES[genre_id])
-    .join(' · ');
+    .join(" · ");
 
   function getImageFromApi(name: string): string {
     return `https://image.tmdb.org/t/p/w300${name}`;
@@ -46,7 +47,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
     const minute: number = minutes % 60;
 
     return (
-      (hour ? hour + 'h' : '') + ('0' + minute).slice(-2) + (hour ? '' : 'm')
+      (hour ? hour + "h" : "") + ("0" + minute).slice(-2) + (hour ? "" : "m")
     );
   }
 
@@ -61,7 +62,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
                 src={
                   poster_path
                     ? getImageFromApi(poster_path)
-                    : './assets/poster-not-found-no-text.jpg'
+                    : "./assets/poster-not-found-no-text.jpg"
                 }
                 alt={`${movie.title} poster`}
               />
@@ -72,7 +73,9 @@ const Card = ({ className, movie, ratio }: CardProps) => {
                   </div>
                   <p>{genresList}</p>
                   <div className={css.text__informations}>
-                    <div className={css.text__information}>1h12m</div>
+                    <div className={css.text__information}>
+                      {vote_average / 2}
+                    </div>
                     {release_date && (
                       <div className={css.text__information}>
                         {release_date.slice(0, 4)}
