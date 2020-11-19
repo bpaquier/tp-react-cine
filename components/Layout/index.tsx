@@ -4,6 +4,7 @@ import Head from "next/head";
 import themeContext from "../../contexts/theme";
 
 import Header from "../Header";
+import Footer from "../Footer";
 
 interface IProps {
   title?: string;
@@ -36,7 +37,6 @@ export default function Layout({ title, children, activePage }: IProps) {
           content="AlloBarbylone, the reference website for cinema and tv series! Discover or search for movie ratings, the budget your favorite series etc ..."
         />
         <meta property="og:image" content="/assets/meta-img.jpg" />
-
         {/* <!-- Twitter --> */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://metatags.io/" />
