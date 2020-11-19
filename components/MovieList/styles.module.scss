@@ -1,14 +1,18 @@
 @import "../../styles/theme";
 
 .moviesList {
-  padding: 56px 156px;
-  background-color: $color-primary-black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px red solid;
+  width: 100%;
+  margin: auto;
 
   &__title {
+    width: 90%;
     font-family: "Libre Franklin", sans-serif;
     font-size: 32px;
     margin-bottom: 40px;
-    color: $color-primary-white;
     font-weight: lighter;
 
     em {
@@ -17,6 +21,7 @@
   }
 
   &__list {
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
