@@ -1,0 +1,51 @@
+@import "../../styles/theme";
+
+.footer {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0% 5%;
+  margin-top: 8%;
+
+  &.dark {
+    color: $color-primary-white;
+    background-color: $color-primary-darkgrey;
+  }
+
+  &.light {
+    color: $color-primary-black;
+    border-top: 1px solid #ccc;
+  }
+}
+
+.logoAB {
+  height: 32px;
+}
+
+.textesMid {
+  width: 50%;
+
+  @include from("md") {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.textes {
+  font-size: 12px;
+  text-align: center;
+  font-family: "Libre Franklin";
+  font-weight: lighter;
+  padding-bottom: 5px;
+}
+
+.project {
+  line-height: 1rem;
+  width: 35%;
+
+  @include from("md") {
+    width: auto;
+  }
+}

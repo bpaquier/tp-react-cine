@@ -3,6 +3,7 @@ import Head from "next/head";
 
 import themeContext from "../../contexts/theme";
 import Header from "../Header";
+import Footer from "../Footer";
 
 export default function Layout({ ...props }) {
   const [theme, setTheme] = useState("dark");
@@ -40,6 +41,7 @@ export default function Layout({ ...props }) {
         </Head>
         <Header />
         {props.children}
+        <Footer />
       </div>
     </themeContext.Provider>
   );
