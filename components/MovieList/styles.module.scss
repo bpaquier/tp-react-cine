@@ -4,11 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 90%;
+  max-width: map-get($screens, 'xl');
+  margin: auto;
   margin-top: 40px;
 
   &__title {
-    width: 90%;
+    width: 100%;
+    text-align: left;
     font-family: 'Libre Franklin', sans-serif;
     font-size: 32px;
     margin-bottom: 40px;
@@ -24,7 +27,7 @@
   }
 
   &__list {
-    width: 90%;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 30px;
