@@ -5,7 +5,7 @@ import { movies } from './utils';
 
 import themeContext from '../../contexts/theme';
 
-import classNames from 'classNames/bind';
+import classNames from 'classnames/bind';
 import css from './styles.module.scss';
 const cx = classNames.bind(css);
 
@@ -26,7 +26,7 @@ const MoviesList = ({
 
   const renderAllCards = (movies: any) => {
     return movies.map((movie: any) => (
-      <div className={css.cardContainer} key={movie.id}>
+      <div className={cx(css.cardContainer, theme)} key={movie.id}>
         <Card className={css.moviesList__card} movie={movie} />
       </div>
     ));

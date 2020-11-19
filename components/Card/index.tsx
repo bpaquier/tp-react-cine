@@ -1,11 +1,12 @@
 import Link from "next/link";
 
-import GENRES from "../../services/genres";
-import React, { useContext } from "react";
-import themeContext from "../../contexts/theme";
-import classNames from "classNames/bind";
-import css from "./styles.module.scss";
-import Ratio from "../Ratio";
+import GENRES from '../../services/genres';
+import React, { useContext } from 'react';
+import themeContext from '../../contexts/theme';
+import classNames from 'classnames/bind';
+import css from './styles.module.scss';
+import Ratio from '../Ratio';
+
 
 const cx = classNames.bind(css);
 const API_URL = "https://api.themoviedb.org/3/search/movie";
