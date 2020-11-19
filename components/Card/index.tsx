@@ -19,20 +19,17 @@ export interface CardProps {
 }
 
 const Card = ({ className, movie, ratio }: CardProps) => {
-  const theme = useContext(themeContext);
+  const themecontext = useContext(themeContext);
+  const [theme] = themecontext;
   const {
     poster_path,
     original_title,
+    original_name,
     genre_ids,
-    runtime,
+    vote_average,
     release_date,
     id,
   } = movie;
-
-  const title =
-    original_title.length > 30
-      ? `${original_title.substr(0, 28)}...`
-      : original_title;
 
   const genresList: string = genre_ids
     .slice(0, 2)
@@ -57,11 +54,13 @@ const Card = ({ className, movie, ratio }: CardProps) => {
               <div className={cx(css.card__description, theme)}>
                 <div className={css.text__container}>
                   <div className={css.titleContainer}>
-                    <h3>{title}</h3>
+                    <h3>{original_title ? original_title : original_name}</h3>
                   </div>
                   <p>{genresList}</p>
                   <div className={css.text__informations}>
-                    <div className={css.text__information}>1h12m</div>
+                    <div className={css.text__information}>
+                      {vote_average / 2}
+                    </div>
                     {release_date && (
                       <div className={css.text__information}>
                         {release_date.slice(0, 4)}

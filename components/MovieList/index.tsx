@@ -5,7 +5,7 @@ import { movies } from './utils';
 
 import themeContext from '../../contexts/theme';
 
-import classNames from 'classNames/bind';
+import classNames from 'classnames/bind';
 import css from './styles.module.scss';
 const cx = classNames.bind(css);
 
@@ -13,23 +13,34 @@ interface MovieListProps {
   queryMovies?: any;
   popularMovies?: any;
   userInput?: string;
+  category?: string;
 }
 
 const MoviesList = ({
   queryMovies,
   popularMovies,
   userInput,
+  category
 }: MovieListProps) => {
-  const theme = useContext(themeContext);
+  const themecontext = useContext(themeContext);
+  const [theme] = themecontext;
   // const MAPMOVIE = queryMovies != null ? queryMovies : popularMovies;
   // console.log(MAPMOVIE);
 
   const renderAllCards = (movies: any) => {
-    return movies.map((movie: any) => (
-      <div className={css.cardContainer} key={movie.id}>
-        <Card className={css.moviesList__card} movie={movie} />
-      </div>
-    ));
+
+
+    if (movies.length > 0) {
+      return movies.map((movie: any) => (
+        <div className={css.cardContainer} key={movie.id}>
+          <Card className={css.moviesList__card} movie={movie} />
+        </div>
+      ));
+    } else {
+      return (
+        <p className={css.errorMessage}>The resource you requested could not be found.</p>
+      )
+    }
   };
 
   return (
@@ -40,12 +51,12 @@ const MoviesList = ({
             <em>Most</em> popular
           </>
         ) : (
-          <>
-            <em>Result for</em> "{userInput}"
+            <>
+              <em>Result for {category}</em> "{userInput}"
           </>
-        )}
+          )}
       </h2>
-      <div className={css.moviesList__list}>
+      <div className={cx(css.moviesList__list, theme)}>
         {renderAllCards(queryMovies || popularMovies)}
       </div>
     </div>
