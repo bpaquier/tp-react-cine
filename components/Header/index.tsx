@@ -61,11 +61,6 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link href='/movies'>
-              <a onClick={handleChangePage} className={currentPage === "movies" ? css.currentPage : null}>Movies</a>
-            </Link>
-          </li>
-          <li>
             <Link href='/myList'>
               <a onClick={handleChangePage} className={currentPage === "my list" ? css.currentPage : null}>My List</a>
             </Link>
