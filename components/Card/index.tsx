@@ -23,6 +23,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
   const {
     poster_path,
     original_title,
+    original_name,
     genre_ids,
     vote_average,
     release_date,
@@ -52,6 +53,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
   }
 
   return (
+
     <Link href={`movie/${id}`}>
       <a>
         <Ratio ratio={ratio}>
@@ -69,7 +71,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
               <div className={cx(css.card__description, theme)}>
                 <div className={css.text__container}>
                   <div className={css.titleContainer}>
-                    <h3>{title}</h3>
+                    <h3>{original_title ? original_title : original_name}</h3>
                   </div>
                   <p>{genresList}</p>
                   <div className={css.text__informations}>
