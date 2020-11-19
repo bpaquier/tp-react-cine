@@ -6,12 +6,11 @@ import classNames from "classnames/bind";
 import css from "./styles.module.scss";
 const cx = classNames.bind(css);
 
-const Header = () => {
+const Header = ({ activePage }) => {
   const themecontext = useContext(themeContext);
   const [theme, setTheme] = themecontext;
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [currentPage, setcurrentPage] = useState("home");
 
   const handleClick = () => {
     setMenuOpen(!menuOpen);
@@ -25,11 +24,6 @@ const Header = () => {
       //@ts-ignore
       setTheme("dark");
     }
-  };
-
-  const handleChangePage = (e) => {
-    setcurrentPage(e.target.innerText.toLowerCase());
-    console.log(currentPage);
   };
 
   return (
@@ -51,30 +45,21 @@ const Header = () => {
         <ul>
           <li>
             <Link href="/">
-              <a
-                onClick={handleChangePage}
-                className={currentPage === "home" ? css.currentPage : null}
-              >
+              <a className={activePage === "home" ? css.currentPage : null}>
                 Home
               </a>
             </Link>
           </li>
           <li>
             <Link href="/tvShows">
-              <a
-                onClick={handleChangePage}
-                className={currentPage === "tv shows" ? css.currentPage : null}
-              >
+              <a className={activePage === "tv shows" ? css.currentPage : null}>
                 Tv Shows
               </a>
             </Link>
           </li>
           <li>
             <Link href="/myList">
-              <a
-                onClick={handleChangePage}
-                className={currentPage === "my list" ? css.currentPage : null}
-              >
+              <a className={activePage === "my list" ? css.currentPage : null}>
                 My List
               </a>
             </Link>

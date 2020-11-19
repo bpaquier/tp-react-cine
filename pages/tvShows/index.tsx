@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Card from "../../components/Card";
 import Hero from "../../components/Hero";
-import Layout from "../../components/Layout"
+import Layout from "../../components/Layout";
 import MoviesList from "../../components/MovieList";
 
 import searchBarFetch from "../../services/searchBarFetch.js";
@@ -19,9 +19,8 @@ export default function Home({ data }) {
     setMovies(result);
   }
 
-
   return (
-    <Layout>
+    <Layout activePage="tv shows">
       <Hero
         title="Search your tv show"
         subtitle="What are we watching tonight ?"
@@ -29,20 +28,26 @@ export default function Home({ data }) {
         userInput={userInput}
         setUserInput={setUserInput}
       />
-      <MoviesList category={'tv shows'} userInput={userInput} queryMovies={movies} popularMovies={data} />
+      <MoviesList
+        category={"tv shows"}
+        userInput={userInput}
+        queryMovies={movies}
+        popularMovies={data}
+      />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
   // Get external data from the file system, API, DB, etc.
-  const data = await fetch("https://api.themoviedb.org/3/tv/popular?api_key=a366c741ebcd23ebb98f75ee1b26fece")
-  const res = await data.json()
-
+  const data = await fetch(
+    "https://api.themoviedb.org/3/tv/popular?api_key=a366c741ebcd23ebb98f75ee1b26fece"
+  );
+  const res = await data.json();
 
   // The value of the `props` key will be
   //  passed to the `Home` component
   return {
-    props: { data: res.results }
-  }
+    props: { data: res.results },
+  };
 }
