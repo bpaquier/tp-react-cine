@@ -1,0 +1,97 @@
+@import "../../styles/theme";
+
+.moviePage {
+  padding-top: 120px;
+  display: flex;
+  width: 80%;
+  height: 100vh;
+  margin: auto;
+}
+
+.movie {
+  &__informations {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70%;
+  }
+
+  &__backbutton {
+    color: $color-primary-bluegreen;
+    font-weight: 600;
+    margin-bottom: 24px;
+    &:hover {
+      text-decoration: underline;
+    }
+    &::before {
+      content: "← ";
+    }
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-size: 40px;
+    font-weight: 800;
+  }
+
+  &__tagline {
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+
+  &__infos {
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 24px;
+    &add {
+      display: flex;
+      margin-bottom: 24px;
+      & .movie__average {
+        margin-right: 24px;
+        &::before {
+          content: "";
+        }
+      }
+      & .movie__budget {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  &__overview {
+    font-size: 20px;
+    font-weight: 300;
+    width: 70%;
+    line-height: 140%;
+    margin-bottom: 40px;
+  }
+
+  &__buttons {
+    display: flex;
+    width: 90%;
+  }
+
+  &__button {
+    font-weight: 600;
+    padding: 13px 23px;
+    border-radius: 4px;
+    color: $color-primary-white;
+    background-color: $color-primary-bluegreen;
+    border: 2px solid $color-primary-bluegreen;
+    box-sizing: border-box;
+    &:hover {
+      background-color: transparent;
+      color: $color-primary-bluegreen;
+    }
+    &:nth-child(1) {
+      margin-right: 40px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    height: 90%;
+  }
+}
