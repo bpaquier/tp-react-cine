@@ -1,7 +1,12 @@
-import Card from "../Card";
-import { movies } from "./utils";
-import classNames from "classNames/bind";
-import css from "./styles.module.scss";
+import { useContext } from 'react';
+
+import Card from '../Card';
+import { movies } from './utils';
+
+import themeContext from '../../contexts/theme';
+
+import classNames from 'classNames/bind';
+import css from './styles.module.scss';
 const cx = classNames.bind(css);
 
 interface MovieListProps {
@@ -12,19 +17,23 @@ interface MovieListProps {
 
 
 const MoviesList = ({ queryMovies, popularMovies, userInput }: MovieListProps) => {
+  const theme = useContext(themeContext);
   // const MAPMOVIE = queryMovies != null ? queryMovies : popularMovies;
   // console.log(MAPMOVIE);
 
   const renderAllCards = (movies : any) =>{
     return movies.map((movie : any) => (
-      <Card key={movie.id} className={css.moviesList__card} movie={movie} />
+      <div className={css.cardContainer}>
+        <Card key={movie.id} className={css.moviesList__card} movie={movie} />
+      </div>
     ));
   } 
 
   return (
     <div className={css.moviesList}>
-      <h2 className={css.moviesList__title}>
+      <h2 className={cx(css.moviesList__title, theme)}>
         {!userInput ? (<><em>Most</em> popular</>) : (<><em>Result for</em> "{userInput}"</>)}
+
       </h2>
       <div className={css.moviesList__list}>{renderAllCards(queryMovies || popularMovies)}</div>
     </div>

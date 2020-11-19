@@ -1,15 +1,25 @@
-@import "../../styles/theme";
+@import '../../styles/theme';
 
 .moviesList {
-  padding: 56px 156px;
-  background-color: $color-primary-black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: map-get($screens, 'xl');
+  margin: auto;
+  margin-top: 40px;
 
   &__title {
-    font-family: "Libre Franklin", sans-serif;
+    width: 100%;
+    text-align: left;
+    font-family: 'Libre Franklin', sans-serif;
     font-size: 32px;
     margin-bottom: 40px;
-    color: $color-primary-white;
     font-weight: lighter;
+
+    &.dark {
+      color: $color-primary-white;
+    }
 
     em {
       font-weight: bold;
@@ -17,10 +27,13 @@
   }
 
   &__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    row-gap: 40px;
-    column-gap: 24px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 30px;
+
+    @include from('xs') {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
   }
 }
