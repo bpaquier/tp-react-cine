@@ -26,8 +26,8 @@ const MoviesList = ({
 
   const renderAllCards = (movies: any) => {
     return movies.map((movie: any) => (
-      <div className={css.cardContainer}>
-        <Card key={movie.id} className={css.moviesList__card} movie={movie} />
+      <div className={css.cardContainer} key={movie.id}>
+        <Card className={css.moviesList__card} movie={movie} />
       </div>
     ));
   };
@@ -35,7 +35,6 @@ const MoviesList = ({
   return (
     <div className={css.moviesList}>
       <h2 className={cx(css.moviesList__title, theme)}>
-
         {!userInput ? (
           <>
             <em>Most</em> popular
@@ -45,7 +44,6 @@ const MoviesList = ({
             <em>Result for</em> "{userInput}"
           </>
         )}
-
       </h2>
       <div className={css.moviesList__list}>
         {renderAllCards(queryMovies || popularMovies)}
