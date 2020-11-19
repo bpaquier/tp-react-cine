@@ -20,7 +20,6 @@ export default function Home({ data }) {
 
   return (
     <>
-      <p>Allo Ciné</p>
       <Hero
         title='Welcome to Allo Barbylone'
         subtitle='What are we watching tonight ?'
