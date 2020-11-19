@@ -32,6 +32,23 @@
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 30px;
 
+    .errorMessage {
+      white-space: nowrap;
+      font-size: 20px;
+    }
+
+    &.dark {
+      .errorMessage {
+        color: $color-primary-white;
+      }
+    }
+
+    &.light {
+      .errorMessage {
+        color: $color-primary-black;
+      }
+    }
+
     @include from('xs') {
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }

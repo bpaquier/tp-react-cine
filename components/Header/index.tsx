@@ -50,7 +50,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link href='/'>
+            <Link href='/tvShows'>
               <a>Tv Shows</a>
             </Link>
           </li>

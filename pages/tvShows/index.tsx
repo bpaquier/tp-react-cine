@@ -1,11 +1,11 @@
 import Link from "next/link";
 
 import { useState } from "react";
-import Card from "../components/Card";
-import Hero from "../components/Hero";
-import MoviesList from "../components/MovieList";
+import Card from "../../components/Card";
+import Hero from "../../components/Hero";
+import MoviesList from "../../components/MovieList";
 
-import searchBarFetch from "../services/searchBarFetch.js";
+import searchBarFetch from "../../services/searchBarFetch.js";
 
 import css from "../styles/Home.module.css";
 
@@ -14,7 +14,7 @@ export default function Home({ data }) {
   const [userInput, setUserInput] = useState("");
 
   async function declencheFetch(query: string) {
-    let result = await searchBarFetch(query, "movie");
+    let result = await searchBarFetch(query, "tv");
     setMovies(result);
   }
 
@@ -22,20 +22,20 @@ export default function Home({ data }) {
   return (
     <>
       <Hero
-        title="Welcome to Allo Barbylone"
+        title="Search your tv show"
         subtitle="What are we watching tonight ?"
         declencheFetch={declencheFetch}
         userInput={userInput}
         setUserInput={setUserInput}
       />
-      <MoviesList category={'movie'} userInput={userInput} queryMovies={movies} popularMovies={data} />
+      <MoviesList category={'tv shows'} userInput={userInput} queryMovies={movies} popularMovies={data} />
     </>
   );
 }
 
 export async function getStaticProps() {
   // Get external data from the file system, API, DB, etc.
-  const data = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=a366c741ebcd23ebb98f75ee1b26fece")
+  const data = await fetch("https://api.themoviedb.org/3/tv/popular?api_key=a366c741ebcd23ebb98f75ee1b26fece")
   const res = await data.json()
 
 

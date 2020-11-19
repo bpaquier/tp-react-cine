@@ -20,6 +20,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
   const {
     poster_path,
     original_title,
+    original_name,
     genre_ids,
     runtime,
     release_date,
@@ -56,14 +57,14 @@ const Card = ({ className, movie, ratio }: CardProps) => {
           />
           <div className={cx(css.card__description, theme)}>
             <div className={css.text__container}>
-              <h3>{original_title}</h3>
+              <h3>{original_title ? original_title : original_name}</h3>
               <p>{genresList}</p>
               <div className={css.text__informations}>
                 <div className={css.text__information}>
                   1h12m
                 </div>
                 {release_date && <div className={css.text__information}>
-                  {release_date.slice(0,4)}
+                  {release_date.slice(0, 4)}
                 </div>}
               </div>
             </div>
