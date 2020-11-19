@@ -23,6 +23,8 @@ const SearchBar = (props: SearchBar) => {
 
   const [micIsActive, setMicIsActive] = useState(false);
   const [micPlaceholder, setMicPlaceHolder] = useState("Say the title");
+  const [presFinished, setpresFinished] = useState(false);
+  const [speechSupported, setSpeechSupported] = useState(false);
 
   const input = useRef(null);
 
@@ -64,11 +66,14 @@ const SearchBar = (props: SearchBar) => {
   
 
   useEffect(() => {
+    if('webkitSpeechRecognition' in window) {
+     setSpeechSupported(true)
+    }
       if(!micIsActive) return;
       if('webkitSpeechRecognition' in window) {
-        console.log("syou can speak");
+       
         
-        let speechRecognizer = new webkitSpeechRecognition();
+        let speechRecognizer =  new  webkitSpeechRecognition();
         speechRecognizer.continuous = true;
         speechRecognizer.interimResults = true;
         speechRecognizer.lang = 'fr-FR';
@@ -86,12 +91,13 @@ const SearchBar = (props: SearchBar) => {
           setIsEmpty(false); 
 
           // DETECT TRANSCRIPT 
-          if(confidence < 0.85){
+          if(confidence < 0.8){
             setMicPlaceHolder("Repeat")
             transcript = "";
-
           }
+          
           else { 
+
             transcript = event.results[0][0].transcript;
             setUserInput(transcript);
             setTimeout(() => {
@@ -104,6 +110,9 @@ const SearchBar = (props: SearchBar) => {
 
         speechRecognizer.onerror = function (event) {
         };
+      }
+      else{
+
       }
   }, [micIsActive]);
 
@@ -125,9 +134,10 @@ const SearchBar = (props: SearchBar) => {
           fill='#5CB7C3'
         />
       </svg>
+    
 
       {!isEmpty && (
-        <div className={css.cross}   onClick={clearUserInput}>
+        <div className={cx(css.cross, !speechSupported && css.crossSafari )}   onClick={clearUserInput} >
   
         <svg
           width='16'
@@ -158,9 +168,20 @@ const SearchBar = (props: SearchBar) => {
         onBlur={handleFocus}
         ref={input}
       />
+      {speechSupported && 
+
       <div className={css.mics} onClick={handleMicClick}>
-     { micIsActive ? <MicroOn/> : <MicroOff/> }
-     </div>
+         { micIsActive ? <MicroOn/> : <MicroOff/> }
+
+     </div> 
+     }
+
+     {presFinished && 
+     <div className={css.presentation}> 
+       <div>
+         <h4>Merci pour de nous avoir écouté</h4>
+         </div>
+       </div>}
     </div>
     
   );
