@@ -30,11 +30,6 @@ const Card = ({ className, movie, ratio }: CardProps) => {
     id,
   } = movie;
 
-  const title =
-    original_title.length > 30
-      ? `${original_title.substr(0, 28)}...`
-      : original_title;
-
   const genresList: string = genre_ids
     .slice(0, 2)
     .map((genre_id) => GENRES[genre_id])

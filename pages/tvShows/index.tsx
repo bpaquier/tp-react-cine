@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Card from "../../components/Card";
 import Hero from "../../components/Hero";
+import Layout from "../../components/Layout"
 import MoviesList from "../../components/MovieList";
 
 import searchBarFetch from "../../services/searchBarFetch.js";
@@ -20,7 +21,7 @@ export default function Home({ data }) {
 
 
   return (
-    <>
+    <Layout>
       <Hero
         title="Search your tv show"
         subtitle="What are we watching tonight ?"
@@ -29,7 +30,7 @@ export default function Home({ data }) {
         setUserInput={setUserInput}
       />
       <MoviesList category={'tv shows'} userInput={userInput} queryMovies={movies} popularMovies={data} />
-    </>
+    </Layout>
   );
 }
 
