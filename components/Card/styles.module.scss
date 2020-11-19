@@ -1,21 +1,35 @@
-@import "../../styles/theme";
+@import '../../styles/theme';
 
 .card {
-  font-family: "Libre Franklin", sans-serif;
+  font-family: 'Libre Franklin', sans-serif;
   display: flex;
   overflow: hidden;
   flex-direction: column;
   background-color: $color-primary-darkgrey;
   border-radius: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
   &__picture {
     object-fit: cover;
     width: 100%;
-    //height: 350px;
+    height: 80%;
   }
   &__description {
     flex-grow: 1;
-    padding: 16px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    height: 20%;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1b1a1a;
   }
 }
 
@@ -23,7 +37,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  height: 70%;
+  width: 90%;
   color: $color-primary-white;
   font-size: 16px;
 

@@ -1,7 +1,7 @@
-import Card from "../Card";
-import { movies } from "./utils";
-import classNames from "classNames/bind";
-import css from "./styles.module.scss";
+import Card from '../Card';
+import { movies } from './utils';
+import classNames from 'classNames/bind';
+import css from './styles.module.scss';
 const cx = classNames.bind(css);
 
 interface MovieListProps {
@@ -10,7 +10,9 @@ interface MovieListProps {
 
 const MoviesList = ({ className }: MovieListProps) => {
   const renderAllCards = movies.map((movie) => (
-    <Card className={css.moviesList__card} movie={movie} />
+    <div className={css.cardContainer}>
+      <Card className={css.moviesList__card} movie={movie} />
+    </div>
   ));
   return (
     <div className={css.moviesList}>

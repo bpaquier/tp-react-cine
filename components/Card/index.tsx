@@ -1,19 +1,20 @@
-import React from "react";
-import classNames from "classNames/bind";
-import css from "./styles.module.scss";
-import Ratio from "../Ratio";
+import React from 'react';
+import classNames from 'classNames/bind';
+import css from './styles.module.scss';
+import Ratio from '../Ratio';
 const cx = classNames.bind(css);
-const API_URL = "https://api.themoviedb.org/3/search/movie";
-const API_KEY = "a366c741ebcd23ebb98f75ee1b26fece";
+const API_URL = 'https://api.themoviedb.org/3/search/movie';
+const API_KEY = 'a366c741ebcd23ebb98f75ee1b26fece';
 
-interface CardProps {
+export interface CardProps {
   className?: string;
   movie: any;
+  ratio: number;
 }
 
-const Card = ({ className, movie }: CardProps) => {
+const Card = ({ className, movie, ratio }: CardProps) => {
   const { poster_path, original_title, genres, runtime, release_date } = movie;
-  const genresList: string = genres.map((genre) => genre.name).join(" · ");
+  const genresList: string = genres.map((genre) => genre.name).join(' · ');
   function getImageFromApi(name: string): string {
     return `https://image.tmdb.org/t/p/w300${name}`;
   }
@@ -22,12 +23,12 @@ const Card = ({ className, movie }: CardProps) => {
     const minute: number = minutes % 60;
 
     return (
-      (hour ? hour + "h" : "") + ("0" + minute).slice(-2) + (hour ? "" : "m")
+      (hour ? hour + 'h' : '') + ('0' + minute).slice(-2) + (hour ? '' : 'm')
     );
   }
 
   return (
-    <Ratio ratio={468 / 274}>
+    <Ratio ratio={ratio}>
       {(className) => (
         <div className={css.card}>
           <img
@@ -52,6 +53,10 @@ const Card = ({ className, movie }: CardProps) => {
       )}
     </Ratio>
   );
+};
+
+Card.defaultProps = {
+  ratio: 274 / 468,
 };
 
 export default Card;
