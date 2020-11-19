@@ -1,7 +1,6 @@
-import React, { DOMAttributes, ReactChild } from "react";
-import classNames from "classnames/bind";
-import css from "./style.module.scss";
-
+import React, { DOMAttributes, ReactChild } from 'react';
+import classNames from 'classnames/bind';
+import css from './style.module.scss';
 const cx = classNames.bind(css);
 
 export interface RatioProps extends DOMAttributes<any> {
