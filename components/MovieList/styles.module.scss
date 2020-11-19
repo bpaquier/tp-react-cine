@@ -31,6 +31,23 @@
     display: grid;
     gap: 30px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+    .errorMessage {
+      white-space: nowrap;
+      font-size: 20px;
+    }
+
+    &.dark {
+      .errorMessage {
+        color: $color-primary-white;
+      }
+    }
+
+    &.light {
+      .errorMessage {
+        color: $color-primary-black;
+      }
+    }
   }
 }
 

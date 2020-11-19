@@ -11,6 +11,7 @@ const Header = () => {
   const [theme, setTheme] = themecontext;
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [currentPage, setcurrentPage] = useState('home');
 
   const handleClick = () => {
     setMenuOpen(!menuOpen);
@@ -25,6 +26,11 @@ const Header = () => {
       setTheme('dark');
     }
   };
+
+  const handleChangePage = (e) => {
+    setcurrentPage(e.target.innerText.toLowerCase())
+    console.log(currentPage)
+  }
 
   return (
     <header className={cx(css.header, theme)}>
@@ -45,22 +51,17 @@ const Header = () => {
         <ul>
           <li>
             <Link href='/'>
-              <a>Home</a>
+              <a onClick={handleChangePage} className={currentPage === "home" ? css.currentPage : null}>Home</a>
             </Link>
           </li>
           <li>
-            <Link href='/'>
-              <a>Tv Shows</a>
+            <Link href='/tvShows'>
+              <a onClick={handleChangePage} className={currentPage === "tv shows" ? css.currentPage : null}>Tv Shows</a>
             </Link>
           </li>
           <li>
-            <Link href='/'>
-              <a>Movies</a>
-            </Link>
-          </li>
-          <li>
-            <Link href='/'>
-              <a>My List</a>
+            <Link href='/myList'>
+              <a onClick={handleChangePage} className={currentPage === "my list" ? css.currentPage : null}>My List</a>
             </Link>
           </li>
         </ul>

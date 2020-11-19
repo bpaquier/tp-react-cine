@@ -18,6 +18,7 @@ export default function Layout({ ...props }) {
             content='AlloBarbylone, the reference website for cinema and tv series! Discover or search for movie ratings, the budget your favorite series etc ...'
           />
 
+
           {/* <!-- Open Graph / Facebook --> */}
           <meta property='og:type' content='website' />
           <meta property='og:url' content='https://metatags.io/' />
@@ -27,6 +28,7 @@ export default function Layout({ ...props }) {
             content='AlloBarbylone, the reference website for cinema and tv series! Discover or search for movie ratings, the budget your favorite series etc ...'
           />
           <meta property='og:image' content='/assets/meta-img.jpg' />
+
 
           {/* <!-- Twitter --> */}
           <meta property='twitter:card' content='summary_large_image' />
@@ -42,5 +44,6 @@ export default function Layout({ ...props }) {
         {props.children}
       </themeContext.Provider>
     </div>
+
   );
 }
