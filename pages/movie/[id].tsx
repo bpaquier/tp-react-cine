@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import classNames from "classNames/bind";
-import uuid from "react-uuid";
+import { v4 as uuidv4 } from "uuid";
 import css from "./styles.module.scss";
 import { useRouter } from "next/router";
 import getMovieFetch from "../../services/getMovie";
+import Layout from "../../components/Layout";
 import { getImageFromApi, minuteToHour } from "../../services/utils";
 
 interface IMovie {
@@ -67,7 +67,7 @@ const Movies = () => {
         return (
           <svg
             className={css.movie__star}
-            key={uuid()}
+            key={uuidv4()}
             width="72"
             height="68"
             viewBox="0 0 72 68"
@@ -84,7 +84,7 @@ const Movies = () => {
         return (
           <svg
             className={css.movie__star}
-            key={uuid()}
+            key={uuidv4()}
             width="71"
             height="68"
             viewBox="0 0 71 68"
@@ -104,39 +104,40 @@ const Movies = () => {
   );
 
   return (
-    <div className={css.moviePage}>
-      <div className={css.movie__informations}>
-        <button className={css.movie__backbutton}>BACK</button>
-        <div className={css.movie__title}> {movie?.original_title} </div>
-        <div className={css.movie__tagline}> {movie?.tagline} </div>
-        <div className={css.movie__infos}>
-          {genresList} · {minuteToHour(movie?.runtime)}
-        </div>
-        <div className={css.movie__average}>{renderStars}</div>
-        <div className={css.movie__infosadd}>
-          <div className={css.movie__budget}>
-            {movie?.budget !== 0 ? newBudget : ""}
+    <Layout>
+      <div className={css.moviePage}>
+        <div className={css.movie__informations}>
+          <button className={css.movie__backbutton}>BACK</button>
+          <div className={css.movie__title}> {movie?.original_title} </div>
+          <div className={css.movie__tagline}> {movie?.tagline} </div>
+          <div className={css.movie__infos}>
+            {genresList} · {minuteToHour(movie?.runtime)}
           </div>
-          <div className={css.movie__release}>
-            {" "}
-            {movie?.release_date.slice(0, 4)}{" "}
+          <div className={css.movie__average}>{renderStars}</div>
+          <div className={css.movie__infosadd}>
+            <div className={css.movie__budget}>
+              {movie?.budget !== 0 ? newBudget : ""}{" "}
+            </div>
+            <div className={css.movie__release}>
+              {movie?.release_date.slice(0, 4)}{" "}
+            </div>
+          </div>
+          <div className={css.movie__overview}>{movie?.overview}</div>
+          <div className={css.movie__buttons}>
+            <button className={css.movie__button}>WATCH</button>
+            <button className={css.movie__button}>ADD TO MY LIST</button>
           </div>
         </div>
-        <div className={css.movie__overview}>{movie?.overview}</div>
-        <div className={css.movie__buttons}>
-          <button className={css.movie__button}>WATCH</button>
-          <button className={css.movie__button}>ADD TO MY LIST</button>
-        </div>
+        <img
+          src={
+            movie?.poster_path
+              ? getImageFromApi(movie?.poster_path)
+              : "./../assets/poster-not-found-no-text.jpg"
+          }
+          className={css.movie__image}
+        />
       </div>
-      <img
-        src={
-          movie?.poster_path
-            ? getImageFromApi(movie?.poster_path)
-            : "./../assets/poster-not-found-no-text.jpg"
-        }
-        className={css.movie__image}
-      />
-    </div>
+    </Layout>
   );
 };
 
