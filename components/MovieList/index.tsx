@@ -5,19 +5,28 @@ import css from "./styles.module.scss";
 const cx = classNames.bind(css);
 
 interface MovieListProps {
-  className?: string;
+  queryMovies?: any;
+  popularMovies?: any;
+  userInput?: string;
 }
 
-const MoviesList = ({ className }: MovieListProps) => {
-  const renderAllCards = movies.map((movie) => (
-    <Card className={css.moviesList__card} movie={movie} />
-  ));
+
+const MoviesList = ({ queryMovies, popularMovies, userInput }: MovieListProps) => {
+  // const MAPMOVIE = queryMovies != null ? queryMovies : popularMovies;
+  // console.log(MAPMOVIE);
+
+  const renderAllCards = (movies : any) =>{
+    return movies.map((movie : any) => (
+      <Card key={movie.id} className={css.moviesList__card} movie={movie} />
+    ));
+  } 
+
   return (
     <div className={css.moviesList}>
       <h2 className={css.moviesList__title}>
-        <em>Most</em> popular
+        {!userInput ? (<><em>Most</em> popular</>) : (<><em>Result for</em> "{userInput}"</>)}
       </h2>
-      <div className={css.moviesList__list}>{renderAllCards}</div>
+      <div className={css.moviesList__list}>{renderAllCards(queryMovies || popularMovies)}</div>
     </div>
   );
 };
