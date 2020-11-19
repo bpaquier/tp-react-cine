@@ -63,6 +63,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
                   1h12m
                 </div>
                 {release_date && <div className={css.text__information}>
+                  {release_date.slice(0,4)}
                 </div>}
               </div>
             </div>
