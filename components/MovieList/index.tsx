@@ -35,6 +35,7 @@ const MoviesList = ({
   return (
     <div className={css.moviesList}>
       <h2 className={cx(css.moviesList__title, theme)}>
+
         {!userInput ? (
           <>
             <em>Most</em> popular
@@ -44,6 +45,7 @@ const MoviesList = ({
             <em>Result for</em> "{userInput}"
           </>
         )}
+
       </h2>
       <div className={css.moviesList__list}>
         {renderAllCards(queryMovies || popularMovies)}
