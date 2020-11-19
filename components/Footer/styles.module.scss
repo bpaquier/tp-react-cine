@@ -2,13 +2,20 @@
 
 .footer {
   height: 100px;
-  background-color: $color-primary-darkgrey;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0% 5%;
   margin-top: 5%;
+
+  &.dark {
+    color: $color-primary-white;
+  }
+
+  &.light {
+    color: $color-primary-black;
+  }
 }
 
 .logoAB {
@@ -25,7 +32,6 @@
 }
 
 .textes {
-  color: white;
   font-size: 12px;
   text-align: center;
   font-family: "Libre Franklin";
