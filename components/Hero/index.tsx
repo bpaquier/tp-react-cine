@@ -1,4 +1,5 @@
-import React from 'react';
+import React ,{ useContext } from 'react';
+import themeContext from "../../contexts/theme";
 import classNames from 'classnames/bind';
 import css from './styles.module.scss';
 import SearchBar from '../SearchBar/';
@@ -15,8 +16,12 @@ export interface Hero {
 
 const Hero = (props: Hero) => {
   const { title, subtitle, declencheFetch, userInput, setUserInput } = props;
+  const themecontext = useContext(themeContext);
+  const [theme] = themecontext;
+  console.log(theme);
+  
   return (
-    <div className={css.hero}>
+    <div className={cx(css.hero, theme)}>
       <h1 className={cx(css.title, css.test)}>{title}</h1>
       <h3> {subtitle} </h3>
       <SearchBar
