@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
 import css from './styles.module.scss';
+import MicroOn from "../Micros/microOn";
+import MicroOff from "../Micros/microOff";
 
 const cx = classNames.bind(css);
 
@@ -18,7 +20,12 @@ const SearchBar = (props: SearchBar) => {
   const [isEmpty, setIsEmpty] = useState(true);
 
   const [isFocused, setIsFocused] = useState(false);
+
+  const [micIsActive, setMicIsActive] = useState(false);
+  const [micPlaceholder, setMicPlaceHolder] = useState("Say the title");
+
   const input = useRef(null);
+
 
   const handleChangeInput = (e: event) => {
     if (e.target.value) {
@@ -40,11 +47,66 @@ const SearchBar = (props: SearchBar) => {
   const clearUserInput = () => {
     setUserInput('');
     setIsEmpty(true);
+    setMicIsActive(false);
+    
   };
 
   const handleFocus = () => {
     setIsFocused((state) => !state);
   };
+
+  const handleMicClick = () => {
+    setMicIsActive(!micIsActive)
+    setUserInput('');
+
+  }
+
+  
+
+  useEffect(() => {
+      if(!micIsActive) return;
+      if('webkitSpeechRecognition' in window) {
+        console.log("syou can speak");
+        
+        let speechRecognizer = new webkitSpeechRecognition();
+        speechRecognizer.continuous = true;
+        speechRecognizer.interimResults = true;
+        speechRecognizer.lang = 'fr-FR';
+        speechRecognizer.start();
+        var finalTranscripts = '';
+        let transcript = "";
+        let confidence;
+  
+        speechRecognizer.onresult = function(event) {
+           confidence = event.results[0][0].confidence;
+          
+          console.log(transcript);    
+          console.log(confidence);
+          
+          setIsEmpty(false); 
+
+          // DETECT TRANSCRIPT 
+          if(confidence < 0.85){
+            setMicPlaceHolder("Repeat")
+            transcript = "";
+
+          }
+          else { 
+            transcript = event.results[0][0].transcript;
+            setUserInput(transcript);
+            setTimeout(() => {
+              speechRecognizer.stop();
+              setMicIsActive(!micIsActive); 
+            }, 1500);
+          }
+        };
+
+
+        speechRecognizer.onerror = function (event) {
+        };
+      }
+  }, [micIsActive]);
+
 
   return (
     <div className={cx(css.search, { isFocused })}>
@@ -65,14 +127,15 @@ const SearchBar = (props: SearchBar) => {
       </svg>
 
       {!isEmpty && (
+        <div className={css.cross}   onClick={clearUserInput}>
+  
         <svg
-          className={css.cross}
-          width='8'
-          height='8'
+          width='16'
+          height='10'
           viewBox='0 0 8 8'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
-          onClick={clearUserInput}
+        
         >
           <path
             d='M6.65472 0.464293C6.39828 0.207848 5.98258 0.207848 5.72614 0.464293L0.464235 5.7262C0.207789 5.98264 0.207789 6.39834 0.464234 6.65478C0.72068 6.91123 1.13638 6.91123 1.39282 6.65478L6.65472 1.39288C6.91117 1.13643 6.91117 0.720738 6.65472 0.464293Z'
@@ -83,18 +146,23 @@ const SearchBar = (props: SearchBar) => {
             fill='#969696'
           />
         </svg>
+        </div>
       )}
 
       <input
         type='text'
-        placeholder={placeholder}
+        placeholder={ micIsActive ? micPlaceholder : placeholder}
         onChange={handleChangeInput}
         value={userInput}
         onFocus={handleFocus}
         onBlur={handleFocus}
         ref={input}
       />
+      <div className={css.mics} onClick={handleMicClick}>
+     { micIsActive ? <MicroOn/> : <MicroOff/> }
+     </div>
     </div>
+    
   );
 };
 
