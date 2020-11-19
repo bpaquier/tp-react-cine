@@ -20,6 +20,18 @@ $headerHeight: 60px;
     background-color: $color-primary-white;
     border-bottom: 1px solid #ccc;
   }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .currentPage {
+    color: $color-primary-bluegreen;
+  }
+
+  .currentPage:hover {
+    text-decoration: none;
+  }
 }
 
 .burgerMenu {
@@ -117,6 +129,8 @@ $headerHeight: 60px;
     text-align: center;
     & li {
       margin-bottom: 32px;
+      text-transform: uppercase;
+      font-weight: 600;
     }
   }
   &.dark {
