@@ -1,11 +1,12 @@
-@import "../../styles/theme";
+@import '../../styles/theme';
 
 .hero {
+  margin-top: $header-height-mobile;
 
-  @include from ("xs"){
+  @include from('xs') {
     height: 410px;
     width: 100vw;
-    background-image: url("../../public/assets/hero-img.jpg");
+    background-image: url('../../public/assets/hero-img.jpg');
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
@@ -15,7 +16,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 
   h1 {
     @include font-hero-h-1($color-primary-white, 40px);
@@ -27,17 +27,14 @@
 
     margin-top: 36px;
   }
-   
-  &.light{
-    h1,h3{
-    @include from ("xs"){
-      color: $color-primary-white;
+
+  &.light {
+    h1,
+    h3 {
+      @include from('xs') {
+        color: $color-primary-white;
+      }
+      color: $color-primary-black;
     }
-    color: $color-primary-black;
   }
-
-  }
-  
 }
-
-
