@@ -7,13 +7,15 @@ $screens: (
   md: 768px,
   l: 930px,
   lg: 1024px,
-  xl: 1280px
+  xl: 1280px,
 );
 
 $color-primary-white: rgba(248, 248, 248, 1);
 $color-primary-black: rgba(13, 13, 13, 1);
 $color-primary-bluegreen: rgba(92, 183, 195, 1);
 $color-primary-darkgrey: #1b1a1a;
+
+$header-height-mobile: 60px;
 
 @mixin font-hero-h-1($color, $size) {
   font-family: "Libre Franklin";
