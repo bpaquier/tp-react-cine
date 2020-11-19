@@ -33,7 +33,6 @@ const MoviesList = ({ queryMovies, popularMovies, userInput }: MovieListProps) =
     <div className={css.moviesList}>
       <h2 className={cx(css.moviesList__title, theme)}>
         {!userInput ? (<><em>Most</em> popular</>) : (<><em>Result for</em> "{userInput}"</>)}
-
       </h2>
       <div className={css.moviesList__list}>{renderAllCards(queryMovies || popularMovies)}</div>
     </div>
