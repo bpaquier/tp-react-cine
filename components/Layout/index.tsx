@@ -9,9 +9,9 @@ export default function Layout({ ...props }) {
   const [theme, setTheme] = useState("dark");
 
   return (
-    <div>
-      <themeContext.Provider value={theme}>
-        <setThemeContext.Provider value={setTheme}>
+    <themeContext.Provider value={theme}>
+      <setThemeContext.Provider value={setTheme}>
+        <div className={`appContainer ${theme}`}>
           <Head>
             <title>{props.title || "ALLO BARBYLONE"}</title>
             <meta name="title" content="ALLO BARBYLONE" />
@@ -45,8 +45,8 @@ export default function Layout({ ...props }) {
           </Head>
           <Header />
           {props.children}
-        </setThemeContext.Provider>
-      </themeContext.Provider>
-    </div>
+        </div>
+      </setThemeContext.Provider>
+    </themeContext.Provider>
   );
 }
