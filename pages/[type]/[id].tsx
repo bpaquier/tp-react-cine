@@ -62,9 +62,11 @@ const Movies = () => {
 
   const newBudget: string =
     new Intl.NumberFormat("us-US").format(movie?.budget) + " $";
-  const genresList: string = movie?.genres
-    .map((genre) => genre.name)
-    .join(" · ");
+    let genresList: string = "";
+    if(movie?.genres) {
+      genresList = movie?.genres.map((genre) => genre.name).join(" · ");
+    }
+    
 
   useEffect(() => {
     async function declencheFetch(type: string, query: string) {
@@ -143,7 +145,7 @@ const Movies = () => {
             {genresList} · {minuteToHour(movie?.runtime)}
           </div>
           <div className={css.movie__average}>
-            {renderStars} {renderVoteAverage(movie.vote_average)}
+            {renderStars} {movie?.vote_average && renderVoteAverage(movie.vote_average)}
           </div>
           <div className={css.movie__infosadd}>
             {movie?.budget ? (
