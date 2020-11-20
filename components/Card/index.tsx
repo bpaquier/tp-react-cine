@@ -7,6 +7,7 @@ import classNames from 'classnames/bind';
 import css from './styles.module.scss';
 import Ratio from '../Ratio';
 import { getImageFromApi } from '../../services/utils';
+import { getMoviesCookies, getTvShowsCookies } from '../../services/cookies';
 
 import { addCookie } from '../../services/cookies';
 
