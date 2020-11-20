@@ -6,16 +6,17 @@ import MicroOff from "../Micros/microOff";
 
 const cx = classNames.bind(css);
 
-export interface SearchBar {
-  placeholder?: string;
-  declencheFetch?: (s: string) => void;
-  userInput?: string;
-  setUserInput?: any;
-}
+// export interface SearchBar {
+//   placeholder?: string;
+//   declencheFetch?: (s: string) => void;
+//   userInput?: string;
+//   setUserInput?: any;
+//   speechRecognizer ?: webkitSpeechRecognition;
+// }
 
-type event = React.ChangeEvent<HTMLInputElement>;
+// type event = React.ChangeEvent<HTMLInputElement>;
 
-const SearchBar = (props: SearchBar) => {
+const SearchBar = (props) => {
   const { placeholder, declencheFetch, setUserInput, userInput } = props;
   const [isEmpty, setIsEmpty] = useState(true);
 
@@ -29,7 +30,7 @@ const SearchBar = (props: SearchBar) => {
   const input = useRef(null);
 
 
-  const handleChangeInput = (e: event) => {
+  const handleChangeInput = (e) => {
     if (e.target.value) {
       setIsEmpty(false);
     } else {
@@ -71,9 +72,9 @@ const SearchBar = (props: SearchBar) => {
     }
       if(!micIsActive) return;
       if('webkitSpeechRecognition' in window) {
-       
+
         
-        let speechRecognizer =  new  webkitSpeechRecognition();
+        let speechRecognizer =  new webkitSpeechRecognition();
         speechRecognizer.continuous = true;
         speechRecognizer.interimResults = true;
         speechRecognizer.lang = 'fr-FR';
@@ -106,6 +107,7 @@ const SearchBar = (props: SearchBar) => {
 
 
         speechRecognizer.onerror = function (event) {
+          setMicPlaceHolder("We didn't understand")
         };
       }
       else{
