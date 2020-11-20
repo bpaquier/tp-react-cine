@@ -72,6 +72,7 @@ const Movies = () => {
       setMovie(result);
     }
     declencheFetch(type as string, id as string);
+
   }, [type, id]);
 
   const renderStars: JSX.Element[] = countStars(movie?.vote_average).map(
@@ -120,7 +121,7 @@ const Movies = () => {
     <Layout
       activePage="movie"
       title={`Barbylone - ${
-        movie?.original_title ? movie?.original_title : movie.original_name
+        movie?.original_title ? movie?.original_title : movie?.original_name
       }`}
     >
       <div className={cx(css.moviePage, theme)}>
