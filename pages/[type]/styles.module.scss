@@ -141,14 +141,15 @@
 
   &__image {
     align-self: center;
-    object-fit: cover;
-    width: 400px;
+    object-fit: contain;
+    object-position: left;
     margin: 40px;
     @include from("md") {
       align-self: flex-start;
       margin: 0;
       object-fit: cover;
       height: 90%;
+      width: 400px;
     }
   }
 }

@@ -20,8 +20,8 @@ const Footer = () => {
             alt="logo Allo Barbylone"
             src={
               theme === "dark"
-                ? "assets/icon-ab-dark.png"
-                : "assets/icon-ab-light.png"
+                ? "/assets/icon-ab-dark.png"
+                : "/assets/icon-ab-light.png"
             }
           />
         </a>
