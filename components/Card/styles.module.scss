@@ -1,7 +1,7 @@
-@import '../../styles/theme';
+@import "../../styles/theme";
 
 .card {
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: "Libre Franklin", sans-serif;
   display: flex;
   overflow: hidden;
   flex-direction: column;
@@ -74,4 +74,8 @@
   font-size: 14px;
   font-weight: 100;
   margin-top: 5%;
+
+  svg {
+    height: 14px;
+  }
 }
