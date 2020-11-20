@@ -116,6 +116,10 @@ const Movies = () => {
     }
   );
 
+  const renderVoteAverage = (average: number): string => {
+    return (average / 2).toString() + " / 5";
+  };
+
   return (
     <Layout
       activePage="movie"
@@ -131,8 +135,7 @@ const Movies = () => {
             {genresList} · {minuteToHour(movie?.runtime)}
           </div>
           <div className={css.movie__average}>
-            {renderStars}
-            {movie?.vote_average} %
+            {renderStars} {renderVoteAverage(movie.vote_average)}
           </div>
           <div className={css.movie__infosadd}>
             {movie?.budget ? (
@@ -140,7 +143,7 @@ const Movies = () => {
             ) : null}
             {type === "movie" ? (
               <div className={css.movie__release}>
-                {movie?.release_date.slice(0, 4)}{" "}
+                {movie?.release_date.slice(0, 4)}
               </div>
             ) : null}
           </div>
