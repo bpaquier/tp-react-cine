@@ -28,8 +28,6 @@ const MoviesList = ({
 }: MovieListProps) => {
   const themecontext = useContext(themeContext);
   const [theme] = themecontext;
-  // const MAPMOVIE = queryMovies != null ? queryMovies : popularMovies;
-  // console.log(MAPMOVIE);
 
   const renderAllCards = (movies: any) => {
     if (movies.length > 0) {
