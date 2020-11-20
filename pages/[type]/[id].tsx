@@ -130,7 +130,7 @@ const Movies = () => {
     >
       <div className={cx(css.moviePage, theme)}>
         <div className={css.movie__informations}>
-          <div className={css.movie__title}> {movie?.original_title} </div>
+          <div className={css.movie__title}> {movie?.original_title ? movie?.original_title : movie?.original_name} </div>
           <div className={css.movie__tagline}> {movie?.tagline} </div>
           <div className={css.movie__infos}>
             {genresList} · {minuteToHour(movie?.runtime)}

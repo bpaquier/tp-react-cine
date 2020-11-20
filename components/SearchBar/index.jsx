@@ -225,10 +225,10 @@ const SearchBar = (props) => {
         <p>Quentin Grancher</p>
         <p>Hugo Borini</p>
         <p>Hugo Cordillot</p>
-        <p>Quentin Found</p>
+        <p>Quentin Trouvé</p>
         <p>Mélina Chamayou</p>
         <p>Thomas Ceglie</p>
-        <p>Bastien Pacquier</p>
+        <p>Bastien Paquier</p>
         <p className={css.longname}>Guillaume Rak-Lecler</p>
         </div>
       </div>
