@@ -38,11 +38,14 @@
   text-align: center;
   font-family: "Libre Franklin";
   font-weight: lighter;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
+  @include from("md") {
+    font-size: 14px;
+  }
 }
 
 .project {
-  line-height: 1rem;
+  line-height: 1.4rem;
   width: 35%;
 
   @include from("md") {
