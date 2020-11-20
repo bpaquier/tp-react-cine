@@ -41,8 +41,8 @@ const Movies = () => {
   const router = useRouter();
   const themecontext = useContext(themeContext);
   const [theme] = themecontext;
-  const { id } = router.query;
-  console.log(theme);
+  const {type, id } = router.query;
+
   const [movie, setMovie] = useState<IMovie>({
     poster_path: "",
     original_title: "",
@@ -62,12 +62,13 @@ const Movies = () => {
     .join(" · ");
 
   useEffect(() => {
-    async function declencheFetch(query: string) {
-      let result = await getMovieFetch(query);
+    async function declencheFetch(type: string, query: string) {
+      let result = await getMovieFetch(type, query);
+      
       setMovie(result);
     }
-    declencheFetch(id as string);
-  }, [id]);
+    declencheFetch(type as string, id as string);
+  }, [type, id]);
 
   const renderStars: JSX.Element[] = countStars(movie?.vote_average).map(
     (star: number) => {
@@ -112,7 +113,7 @@ const Movies = () => {
   );
 
   return (
-    <Layout activePage="movie" title={`Barbylone - ${movie.original_title}`}>
+    <Layout activePage="movie" title={`Barbylone - `}>
       <div className={cx(css.moviePage, theme)}>
         <div className={css.movie__informations}>
           <button className={css.movie__backbutton}>BACK</button>
@@ -126,9 +127,12 @@ const Movies = () => {
             {movie?.budget ? (
               <div className={css.movie__budget}>{newBudget}</div>
             ) : null}
+            {type === 'movie' ? 
             <div className={css.movie__release}>
               {movie?.release_date.slice(0, 4)}{" "}
             </div>
+            : null
+          }
           </div>
           <div className={css.movie__overview}>{movie?.overview}</div>
           <div className={css.movie__buttons}>

@@ -2,9 +2,10 @@ import React, { useState, useContext, InputHTMLAttributes } from "react";
 import Link from "next/link";
 import themeContext from "../../contexts/theme";
 
-import classNames from "classnames/bind";
+
+import classnames from "classnames/bind";
 import css from "./styles.module.scss";
-const cx = classNames.bind(css);
+const cx = classnames.bind(css);
 
 const Footer = () => {
   const themecontext = useContext(themeContext);

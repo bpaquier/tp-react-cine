@@ -14,26 +14,27 @@ interface MovieListProps {
   popularMovies?: any;
   userInput?: string;
   category?: string;
+  type?: string;
 }
 
 const MoviesList = ({
   queryMovies,
   popularMovies,
   userInput,
-  category
+  category,
+  type
 }: MovieListProps) => {
   const themecontext = useContext(themeContext);
   const [theme] = themecontext;
-  // const MAPMOVIE = queryMovies != null ? queryMovies : popularMovies;
-  // console.log(MAPMOVIE);
+  
+  console.log(type);
 
   const renderAllCards = (movies: any) => {
-
 
     if (movies.length > 0) {
       return movies.map((movie: any) => (
         <div className={css.cardContainer} key={movie.id}>
-          <Card className={css.moviesList__card} movie={movie} />
+          <Card className={css.moviesList__card} movie={movie} type={type} />
         </div>
       ));
     } else {
