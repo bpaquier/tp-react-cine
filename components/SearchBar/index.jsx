@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import css from './styles.module.scss';
 import MicroOn from "../Micros/microOn";
 import MicroOff from "../Micros/microOff";
+import Cross from "../Micros/Cross";
 
 const cx = classNames.bind(css);
 
@@ -61,9 +62,12 @@ const SearchBar = (props) => {
   const handleMicClick = () => {
     setMicIsActive(!micIsActive)
     setUserInput('');
-
   }
 
+
+  const handleGenerique = () =>{
+    setpresFinished(!presFinished);
+  }
   
 
   useEffect(() => {
@@ -95,8 +99,12 @@ const SearchBar = (props) => {
           }
           
           else { 
-
             transcript = event.results[0][0].transcript;
+            if(transcript == "générique"){
+              handleGenerique();
+            }
+
+            
             setUserInput(transcript);
             setTimeout(() => {
               speechRecognizer.stop();
@@ -176,11 +184,25 @@ const SearchBar = (props) => {
      }
 
      {presFinished && 
-     <div className={css.presentation}> 
+     <div className={presFinished && css.presentation}> 
+       <Cross onClick={handleGenerique}/>
        <div>
          <h4>Merci pour de nous avoir écouté</h4>
+
+         <p>Reda Hamouche</p>
+         <p>Nawel Berrichi</p>
+         <p>Constance Pétillot</p>
+         <p>Quentin Grancher</p>
+         <p>Hugo Borini</p>
+         <p>Hugo Cordillot</p>
+         <p>Quentin Found</p>
+         <p>Mélina Chamayou</p>
+         <p>Thomas Ceglie</p>
+         <p>Bastien Pacquier</p>
+         <p className={css.longname}>Guillaume Rak-Lecler</p>
          </div>
-       </div>}
+       </div>
+       }
     </div>
     
   );

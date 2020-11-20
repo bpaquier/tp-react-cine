@@ -32,11 +32,14 @@
   }
 }
 .burgerMenuContainer {
-  height: 20px;
   background-color: transparent;
   display: flex;
   align-items: center;
   cursor: pointer;
+  height: 20px;
+  @include from("md") {
+    display: none;
+  }
 }
 
 .burgerMenu {
