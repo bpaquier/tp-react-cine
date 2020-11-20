@@ -32,6 +32,8 @@ const Header = ({ activePage }) => {
         className={cx(css.burgerMenu, theme, { menuOpen })}
         onClick={handleClick}
       ></div>
+      <Link href="/">
+        <a>
       <img
         className={css.logoAB}
         alt="logo Allo Barbylone"
@@ -40,7 +42,9 @@ const Header = ({ activePage }) => {
             ? "/assets/icon-ab-dark.png"
             : "/assets/icon-ab-light.png"
         }
-      />
+      /> 
+      </a>
+      </Link>
       <nav className={cx(css.nav, theme, { menuOpen })}>
         <ul>
           <li>

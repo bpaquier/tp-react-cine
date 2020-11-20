@@ -78,15 +78,12 @@ const SearchBar = (props: SearchBar) => {
         speechRecognizer.interimResults = true;
         speechRecognizer.lang = 'fr-FR';
         speechRecognizer.start();
-        var finalTranscripts = '';
         let transcript = "";
         let confidence;
   
         speechRecognizer.onresult = function(event) {
            confidence = event.results[0][0].confidence;
-          
-          console.log(transcript);    
-          console.log(confidence);
+
           
           setIsEmpty(false); 
 
