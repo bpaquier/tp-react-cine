@@ -84,10 +84,8 @@
   color: $color-primary-white;
   justify-content: center;
   background-image: url("../../public/assets/generique.gif");
-  filter: grayscale(90%);
 
   div {
-    margin: auto;
   }
   svg {
     position: absolute;
@@ -98,6 +96,20 @@
   h4 {
     font-size: 24px;
     margin-bottom: 20px;
+    font-weight: bold;
+    margin-top: 12px;
+  }
+  h5 {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: bolder;
+    color: $color-primary-bluegreen;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+
+    animation: type 9s 1s steps(60, end);
+    margin-left: 25%;
   }
   p {
     margin-top: 12px;
@@ -106,6 +118,7 @@
     white-space: nowrap;
     overflow: hidden;
     width: 40%;
+    margin-left: 25%;
   }
 
   @keyframes type {
@@ -116,7 +129,7 @@
       width: 0;
     }
     100% {
-      width: 130%;
+      width: 100%;
     }
   }
 
