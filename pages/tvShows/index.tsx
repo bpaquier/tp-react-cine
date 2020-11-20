@@ -1,7 +1,5 @@
-import Link from "next/link";
-
 import { useState } from "react";
-import Card from "../../components/Card";
+
 import Hero from "../../components/Hero";
 import Layout from "../../components/Layout";
 import MoviesList from "../../components/MovieList";
