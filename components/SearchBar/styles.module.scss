@@ -3,14 +3,15 @@
 .search {
   margin-top: 32px;
   background: transparent;
-  border-radius: 4px;
   position: relative;
   transition: transform 0.2s ease;
   display: flex;
   align-items: center;
 
   .mics {
-    margin-left: 12px;
+    background-color: $color-primary-white;
+    padding: 11px;
+    border-radius: 0 4px 4px 0;
     &:hover {
       cursor: pointer;
     }
@@ -45,7 +46,7 @@
     height: 40px;
     width: 244px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
+    border-radius: 4px 0 0 4px;
     background-color: $color-primary-white;
     padding-left: 40px;
     color: $color-primary-black;
