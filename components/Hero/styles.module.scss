@@ -1,8 +1,6 @@
 @import '../../styles/theme';
 
 .hero {
-  margin-top: $header-height-mobile;
-
   @include from('xs') {
     height: 410px;
     width: 100vw;

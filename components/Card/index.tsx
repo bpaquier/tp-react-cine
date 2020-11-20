@@ -7,7 +7,8 @@ import classNames from 'classnames/bind';
 import css from './styles.module.scss';
 import Ratio from '../Ratio';
 import { getImageFromApi } from '../../services/utils';
-import Cookies from 'js-cookie';
+
+import { addCookie } from '../../services/cookies';
 
 const cx = classNames.bind(css);
 const API_URL = 'https://api.themoviedb.org/3/search/movie';
@@ -17,9 +18,10 @@ export interface CardProps {
   className?: string;
   movie: any;
   ratio: number;
+  category?: string;
 }
 
-const Card = ({ className, movie, ratio }: CardProps) => {
+const Card = ({ className, movie, ratio, category }: CardProps) => {
   const themecontext = useContext(themeContext);
   const [theme] = themecontext;
   const {
@@ -41,14 +43,17 @@ const Card = ({ className, movie, ratio }: CardProps) => {
     .map((genre_id: number) => GENRES[genre_id])
     .join(' · ');
 
-  console.log(movie);
+  const addToFavorite = () => {
+    addCookie(movie, category);
+  };
 
   return (
-    <Link href={`movie/${id}`}>
-      <a>
-        <Ratio ratio={ratio}>
-          {(className) => (
-            <div className={css.card}>
+    <Ratio ratio={ratio}>
+      {(className) => (
+        <div className={css.card}>
+          <div className={css.cardFavorite} onClick={addToFavorite}></div>
+          <Link href={`movie/${id}`}>
+            <a>
               <img
                 className={cx(css.card__picture, theme)}
                 src={
@@ -80,11 +85,11 @@ const Card = ({ className, movie, ratio }: CardProps) => {
                   </div>
                 </div>
               </div>
-            </div>
-          )}
-        </Ratio>
-      </a>
-    </Link>
+            </a>
+          </Link>
+        </div>
+      )}
+    </Ratio>
   );
 };
 

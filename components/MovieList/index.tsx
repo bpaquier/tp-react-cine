@@ -14,13 +14,15 @@ interface MovieListProps {
   popularMovies?: any;
   userInput?: string;
   category?: string;
+  customTitle?: string;
 }
 
 const MoviesList = ({
   queryMovies,
   popularMovies,
   userInput,
-  category
+  category,
+  customTitle,
 }: MovieListProps) => {
   const themecontext = useContext(themeContext);
   const [theme] = themecontext;
@@ -28,18 +30,22 @@ const MoviesList = ({
   // console.log(MAPMOVIE);
 
   const renderAllCards = (movies: any) => {
-
-
     if (movies.length > 0) {
       return movies.map((movie: any) => (
         <div className={css.cardContainer} key={movie.id}>
-          <Card className={css.moviesList__card} movie={movie} />
+          <Card
+            className={css.moviesList__card}
+            movie={movie}
+            category={category}
+          />
         </div>
       ));
     } else {
       return (
-        <p className={css.errorMessage}>The resource you requested could not be found.</p>
-      )
+        <p className={css.errorMessage}>
+          The resource you requested could not be found.
+        </p>
+      );
     }
   };
 
@@ -48,13 +54,21 @@ const MoviesList = ({
       <h2 className={cx(css.moviesList__title, theme)}>
         {!userInput ? (
           <>
-            <em>Most</em> popular
+            {customTitle ? (
+              <>
+                <em>{customTitle}</em>
+              </>
+            ) : (
+              <>
+                <em>Most</em> popular
+              </>
+            )}
           </>
         ) : (
-            <>
-              <em>Result for {category}</em> "{userInput}"
+          <>
+            <em>Result for {category}</em> "{userInput}"
           </>
-          )}
+        )}
       </h2>
       <div className={cx(css.moviesList__list, theme)}>
         {renderAllCards(queryMovies || popularMovies)}

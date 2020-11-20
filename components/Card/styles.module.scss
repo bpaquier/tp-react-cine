@@ -1,5 +1,14 @@
 @import '../../styles/theme';
 
+.cardFavorite {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  top: 5px;
+  right: 5px;
+}
+
 .card {
   font-family: 'Libre Franklin', sans-serif;
   display: flex;
