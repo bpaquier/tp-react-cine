@@ -28,10 +28,10 @@ const Header = ({ activePage }) => {
 
   return (
     <header className={cx(css.header, theme)}>
-      <div
-        className={cx(css.burgerMenu, theme, { menuOpen })}
-        onClick={handleClick}
-      ></div>
+      <div onClick={handleClick} className={css.burgerMenuContainer} >
+      <div className={cx(css.burgerMenu, theme, { menuOpen })}>
+      </div>
+      </div>
       <Link href="/">
         <a>
       <img

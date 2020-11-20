@@ -12,6 +12,8 @@ const Footer = () => {
 
   return (
     <footer className={cx(css.footer, theme)}>
+       <Link href="https://kangoufire.netlify.app/">
+         <a href="https://kangoufire.netlify.app/" target="_blank">
       <img
         className={css.logoAB}
         alt='logo Allo Barbylone'
@@ -21,6 +23,8 @@ const Footer = () => {
             : 'assets/icon-ab-light.png'
         }
       />
+      </a>
+      </Link>
       <div className={css.textesMid}>
         <p className={cx(css.textes, css.mentionsLegales)}>Mentions légales</p>
         <p className={cx(css.textes, css.cgu)}>CGU</p>
