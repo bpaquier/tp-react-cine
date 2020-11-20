@@ -188,18 +188,18 @@ const SearchBar = (props) => {
        <Cross onClick={handleGenerique}/>
        <div>
          <h4>Merci pour de nous avoir écouté</h4>
-
          <p>Reda Hamouche</p>
          <p>Nawel Berrichi</p>
          <p>Constance Pétillot</p>
          <p>Quentin Grancher</p>
          <p>Hugo Borini</p>
          <p>Hugo Cordillot</p>
-         <p>Quentin Found</p>
-         <p>Mélina Chamayou</p>
+         <p>Quentin Trouvé</p>
+         <p>Melina Chamayou</p>
          <p>Thomas Ceglie</p>
-         <p>Bastien Pacquier</p>
+         <p>Bastien Paquier</p>
          <p className={css.longname}>Guillaume Rak-Lecler</p>
+         <h5>L'équipe Barbylone </h5>
          </div>
        </div>
        }
