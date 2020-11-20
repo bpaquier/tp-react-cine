@@ -2,7 +2,7 @@ import React, { useState, useContext, InputHTMLAttributes } from "react";
 import Link from "next/link";
 import themeContext from "../../contexts/theme";
 
-import classnames from "classNames/bind";
+import classNames from "classnames/bind";
 import css from "./styles.module.scss";
 const cx = classnames.bind(css);
 
@@ -12,15 +12,19 @@ const Footer = () => {
 
   return (
     <footer className={cx(css.footer, theme)}>
-      <img
-        className={css.logoAB}
-        alt="logo Allo Barbylone"
-        src={
-          theme === "dark"
-            ? "assets/icon-ab-dark.png"
-            : "assets/icon-ab-light.png"
-        }
-      />
+      <Link href="/">
+        <a>
+          <img
+            className={css.logoAB}
+            alt="logo Allo Barbylone"
+            src={
+              theme === "dark"
+                ? "assets/icon-ab-dark.png"
+                : "assets/icon-ab-light.png"
+            }
+          />
+        </a>
+      </Link>
       <div className={css.textesMid}>
         <p className={cx(css.textes, css.mentionsLegales)}>Mentions légales</p>
         <p className={cx(css.textes, css.cgu)}>CGU</p>
