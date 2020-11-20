@@ -119,7 +119,7 @@ const SearchBar = (props) => {
         let confidence;
   
         speechRecognizer.onresult = function(event) {
-           confidence = event.results[0][0].confidence;
+          confidence = event.results[0][0].confidence;
 
           
           setIsEmpty(false); 
@@ -213,26 +213,26 @@ const SearchBar = (props) => {
         </div>
       )}
 
-     {presFinished && 
-     <div className={presFinished && css.presentation}> 
-       <Cross onClick={handleGenerique}/>
-       <div>
-         <h4>Merci pour de nous avoir écouté</h4>
+    {presFinished && 
+    <div className={presFinished && css.presentation}> 
+      <Cross onClick={handleGenerique}/>
+      <div>
+        <h4>Merci pour de nous avoir écouté</h4>
 
-         <p>Reda Hamouche</p>
-         <p>Nawel Berrichi</p>
-         <p>Constance Pétillot</p>
-         <p>Quentin Grancher</p>
-         <p>Hugo Borini</p>
-         <p>Hugo Cordillot</p>
-         <p>Quentin Found</p>
-         <p>Mélina Chamayou</p>
-         <p>Thomas Ceglie</p>
-         <p>Bastien Pacquier</p>
-         <p className={css.longname}>Guillaume Rak-Lecler</p>
-         </div>
-       </div>
-       }
+        <p>Reda Hamouche</p>
+        <p>Nawel Berrichi</p>
+        <p>Constance Pétillot</p>
+        <p>Quentin Grancher</p>
+        <p>Hugo Borini</p>
+        <p>Hugo Cordillot</p>
+        <p>Quentin Found</p>
+        <p>Mélina Chamayou</p>
+        <p>Thomas Ceglie</p>
+        <p>Bastien Pacquier</p>
+        <p className={css.longname}>Guillaume Rak-Lecler</p>
+        </div>
+      </div>
+      }
     </div>
   );
 };
