@@ -16,9 +16,10 @@ export interface CardProps {
   className?: string;
   movie: any;
   ratio: number;
+  type?: string;
 }
 
-const Card = ({ className, movie, ratio }: CardProps) => {
+const Card = ({ className, movie, ratio, type }: CardProps) => {
   const themecontext = useContext(themeContext);
   const [theme] = themecontext;
   const {
@@ -29,7 +30,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
     vote_average,
     release_date,
     id,
-  } = movie;
+  } = movie;   
 
   const title = (title: string) => {
     return title.length > 30 ? `${title.substr(0, 28)}...` : title;
@@ -41,7 +42,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
     .join(" · ");
 
   return (
-    <Link href={`movie/${id}`}>
+    <Link href={`${type}/${id}`}>
       <a>
         <Ratio ratio={ratio}>
           {(className) => (

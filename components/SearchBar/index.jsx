@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import css from "./styles.module.scss";
 import MicroOn from "../Micros/microOn";
 import MicroOff from "../Micros/microOff";
+import Cross from "../Micros/Cross";
 
 const cx = classNames.bind(css);
 
@@ -57,9 +58,15 @@ const SearchBar = (props) => {
   };
 
   const handleMicClick = () => {
-    setMicIsActive(!micIsActive);
-    setUserInput("");
-  };
+
+    setMicIsActive(!micIsActive)
+    setUserInput('');
+  }
+
+
+  const handleGenerique = () =>{
+    setpresFinished(!presFinished);
+  }
 
   useEffect(() => {
     if ("webkitSpeechRecognition" in window) {
@@ -99,6 +106,54 @@ const SearchBar = (props) => {
       };
     } else {
     }
+      if(!micIsActive) return;
+      if('webkitSpeechRecognition' in window) {
+
+        
+        let speechRecognizer =  new webkitSpeechRecognition();
+        speechRecognizer.continuous = true;
+        speechRecognizer.interimResults = true;
+        speechRecognizer.lang = 'fr-FR';
+        speechRecognizer.start();
+        let transcript = "";
+        let confidence;
+  
+        speechRecognizer.onresult = function(event) {
+           confidence = event.results[0][0].confidence;
+
+          
+          setIsEmpty(false); 
+
+          // DETECT TRANSCRIPT 
+          if(confidence < 0.8){
+            setMicPlaceHolder("Repeat")
+            transcript = "";
+          }
+          
+          else { 
+            transcript = event.results[0][0].transcript;
+            if(transcript == "générique"){
+              handleGenerique();
+            }
+
+            
+            setUserInput(transcript);
+            setTimeout(() => {
+              speechRecognizer.stop();
+              setMicIsActive(!micIsActive); 
+            }, 1500);
+          }
+        };
+
+
+        speechRecognizer.onerror = function (event) {
+          setMicPlaceHolder("We didn't understand")
+        };
+      }
+      else{
+
+      }
+
   }, [micIsActive]);
 
   return (
@@ -158,13 +213,26 @@ const SearchBar = (props) => {
         </div>
       )}
 
-      {presFinished && (
-        <div className={css.presentation}>
-          <div>
-            <h4>Merci pour de nous avoir écouté</h4>
-          </div>
-        </div>
-      )}
+     {presFinished && 
+     <div className={presFinished && css.presentation}> 
+       <Cross onClick={handleGenerique}/>
+       <div>
+         <h4>Merci pour de nous avoir écouté</h4>
+
+         <p>Reda Hamouche</p>
+         <p>Nawel Berrichi</p>
+         <p>Constance Pétillot</p>
+         <p>Quentin Grancher</p>
+         <p>Hugo Borini</p>
+         <p>Hugo Cordillot</p>
+         <p>Quentin Found</p>
+         <p>Mélina Chamayou</p>
+         <p>Thomas Ceglie</p>
+         <p>Bastien Pacquier</p>
+         <p className={css.longname}>Guillaume Rak-Lecler</p>
+         </div>
+       </div>
+       }
     </div>
   );
 };
