@@ -19,9 +19,10 @@ $header-height-mobile: 60px;
 
 @mixin font-hero-h-1($color, $size) {
   font-family: "Libre Franklin";
-  font-weight: extrabold;
+  font-weight: bolder;
   color: $color;
   font-size: $size;
+  text-transform: uppercase;
 }
 @mixin font-hero-h-3($color, $size) {
   font-family: "Libre Franklin";
