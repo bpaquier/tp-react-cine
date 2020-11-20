@@ -1,9 +1,9 @@
-import React, { useState, useContext, InputHTMLAttributes } from "react";
-import Link from "next/link";
-import themeContext from "../../contexts/theme";
+import React, { useState, useContext, InputHTMLAttributes } from 'react';
+import Link from 'next/link';
+import themeContext from '../../contexts/theme';
 
-import classNames from "classnames/bind";
-import css from "./styles.module.scss";
+import classNames from 'classnames/bind';
+import css from './styles.module.scss';
 const cx = classNames.bind(css);
 
 const Header = ({ activePage }) => {
@@ -19,10 +19,10 @@ const Header = ({ activePage }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
       //@ts-ignore
-      setTheme("light");
+      setTheme('light');
     } else {
       //@ts-ignore
-      setTheme("dark");
+      setTheme('dark');
     }
   };
 
@@ -34,32 +34,32 @@ const Header = ({ activePage }) => {
       ></div>
       <img
         className={css.logoAB}
-        alt="logo Allo Barbylone"
+        alt='logo Allo Barbylone'
         src={
-          theme === "dark"
-            ? "/assets/icon-ab-dark.png"
-            : "/assets/icon-ab-light.png"
+          theme === 'dark'
+            ? '/assets/icon-ab-dark.png'
+            : '/assets/icon-ab-light.png'
         }
       />
       <nav className={cx(css.nav, theme, { menuOpen })}>
         <ul>
           <li>
-            <Link href="/">
-              <a className={activePage === "home" ? css.currentPage : null}>
+            <Link href='/'>
+              <a className={activePage === 'home' ? css.currentPage : null}>
                 Home
               </a>
             </Link>
           </li>
           <li>
-            <Link href="/tvShows">
-              <a className={activePage === "tv shows" ? css.currentPage : null}>
+            <Link href='/tvShows'>
+              <a className={activePage === 'tv shows' ? css.currentPage : null}>
                 Tv Shows
               </a>
             </Link>
           </li>
           <li>
-            <Link href="/myList">
-              <a className={activePage === "my list" ? css.currentPage : null}>
+            <Link href='/my-list'>
+              <a className={activePage === 'my list' ? css.currentPage : null}>
                 My List
               </a>
             </Link>
@@ -70,9 +70,9 @@ const Header = ({ activePage }) => {
         <label className={cx(css.switch, theme)}>
           <input
             onChange={handleChange}
-            type="checkbox"
+            type='checkbox'
             className={css.input}
-            checked={theme === "light" ? true : false}
+            checked={theme === 'light' ? true : false}
           />
           <span className={cx(css.slider, css.round)}></span>
         </label>

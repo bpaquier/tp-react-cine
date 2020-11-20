@@ -1,16 +1,17 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import GENRES from "../../services/genres";
-import React, { useContext } from "react";
-import themeContext from "../../contexts/theme";
-import classNames from "classnames/bind";
-import css from "./styles.module.scss";
-import Ratio from "../Ratio";
-import { getImageFromApi } from "../../services/utils";
+import GENRES from '../../services/genres';
+import React, { useContext } from 'react';
+import themeContext from '../../contexts/theme';
+import classNames from 'classnames/bind';
+import css from './styles.module.scss';
+import Ratio from '../Ratio';
+import { getImageFromApi } from '../../services/utils';
+import Cookies from 'js-cookie';
 
 const cx = classNames.bind(css);
-const API_URL = "https://api.themoviedb.org/3/search/movie";
-const API_KEY = "a366c741ebcd23ebb98f75ee1b26fece";
+const API_URL = 'https://api.themoviedb.org/3/search/movie';
+const API_KEY = 'a366c741ebcd23ebb98f75ee1b26fece';
 
 export interface CardProps {
   className?: string;
@@ -37,8 +38,10 @@ const Card = ({ className, movie, ratio }: CardProps) => {
 
   const genresList: string = genre_ids
     .slice(0, 2)
-    .map((genre_id) => GENRES[genre_id])
-    .join(" · ");
+    .map((genre_id: number) => GENRES[genre_id])
+    .join(' · ');
+
+  console.log(movie);
 
   return (
     <Link href={`movie/${id}`}>
@@ -51,7 +54,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
                 src={
                   poster_path
                     ? getImageFromApi(poster_path)
-                    : "./assets/poster-not-found-no-text.jpg"
+                    : './assets/poster-not-found-no-text.jpg'
                 }
                 alt={`${movie.title} poster`}
               />
