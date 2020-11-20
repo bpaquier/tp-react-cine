@@ -230,6 +230,7 @@ const SearchBar = (props) => {
         <p>Thomas Ceglie</p>
         <p>Bastien Paquier</p>
         <p className={css.longname}>Guillaume Rak-Lecler</p>
+        <h5>L'équipe Barbylone</h5>
         </div>
       </div>
       }
