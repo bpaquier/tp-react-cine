@@ -70,7 +70,7 @@ const Card = ({ className, movie, ratio }: CardProps) => {
                       {vote_average / 2}
                       <svg
                         className={css.movie__star}
-                        width="72"
+                        width="30"
                         height="68"
                         viewBox="0 0 72 68"
                         fill="none"
