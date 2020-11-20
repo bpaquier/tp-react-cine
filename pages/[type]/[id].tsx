@@ -8,6 +8,7 @@ import getMovieFetch from "../../services/getMovie";
 import Layout from "../../components/Layout";
 import { getImageFromApi, minuteToHour } from "../../services/utils";
 import themeContext from "../../contexts/theme";
+import Link from  "next/link";
 
 const cx = classNames.bind(css);
 
@@ -130,6 +131,12 @@ const Movies = () => {
     >
       <div className={cx(css.moviePage, theme)}>
         <div className={css.movie__informations}>
+          <Link href="/">
+            <a href="/">
+            <button className={css.movie__backbutton}>BACK</button>
+            </a>
+          </Link>
+
           <div className={css.movie__title}> {movie?.original_title ? movie?.original_title : movie?.original_name} </div>
           <div className={css.movie__tagline}> {movie?.tagline} </div>
           <div className={css.movie__infos}>
