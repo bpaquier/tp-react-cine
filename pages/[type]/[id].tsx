@@ -21,6 +21,8 @@ interface IMovie {
   vote_average: null;
   tagline: string;
   overview: string;
+  homepage: string;
+  original_name: string;
 }
 
 interface IGenre {
@@ -41,7 +43,7 @@ const Movies = () => {
   const router = useRouter();
   const themecontext = useContext(themeContext);
   const [theme] = themecontext;
-  const {type, id } = router.query;
+  const { type, id } = router.query;
 
   const [movie, setMovie] = useState<IMovie>({
     poster_path: "",
@@ -53,6 +55,8 @@ const Movies = () => {
     vote_average: null,
     tagline: "",
     overview: "",
+    homepage: "",
+    original_name: "",
   });
 
   const newBudget: string =
@@ -64,7 +68,7 @@ const Movies = () => {
   useEffect(() => {
     async function declencheFetch(type: string, query: string) {
       let result = await getMovieFetch(type, query);
-      
+
       setMovie(result);
     }
     declencheFetch(type as string, id as string);
@@ -113,30 +117,40 @@ const Movies = () => {
   );
 
   return (
-    <Layout activePage="movie" title={`Barbylone - `}>
+    <Layout
+      activePage="movie"
+      title={`Barbylone - ${
+        movie?.original_title ? movie?.original_title : movie.original_name
+      }`}
+    >
       <div className={cx(css.moviePage, theme)}>
         <div className={css.movie__informations}>
-          <button className={css.movie__backbutton}>BACK</button>
           <div className={css.movie__title}> {movie?.original_title} </div>
           <div className={css.movie__tagline}> {movie?.tagline} </div>
           <div className={css.movie__infos}>
             {genresList} · {minuteToHour(movie?.runtime)}
           </div>
-          <div className={css.movie__average}>{renderStars}</div>
+          <div className={css.movie__average}>
+            {renderStars}
+            {movie?.vote_average} %
+          </div>
           <div className={css.movie__infosadd}>
             {movie?.budget ? (
               <div className={css.movie__budget}>{newBudget}</div>
             ) : null}
-            {type === 'movie' ? 
-            <div className={css.movie__release}>
-              {movie?.release_date.slice(0, 4)}{" "}
-            </div>
-            : null
-          }
+            {type === "movie" ? (
+              <div className={css.movie__release}>
+                {movie?.release_date.slice(0, 4)}{" "}
+              </div>
+            ) : null}
           </div>
           <div className={css.movie__overview}>{movie?.overview}</div>
           <div className={css.movie__buttons}>
-            <button className={css.movie__button}>WATCH</button>
+            <button className={css.movie__button}>
+              <a href={movie?.homepage} target="_blank">
+                VIEW WEBSITE
+              </a>
+            </button>
             <button className={css.movie__button}>ADD TO MY LIST</button>
           </div>
         </div>
