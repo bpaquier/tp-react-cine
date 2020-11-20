@@ -1,5 +1,33 @@
 @import "../../styles/theme";
 
+.cardFavorite {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+
+  &.alreadyLiked {
+    svg {
+      fill: $color-primary-bluegreen;
+    }
+  }
+
+  svg {
+    height: 55%;
+    width: 70%;
+    stroke: $color-primary-bluegreen;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
 .card {
   font-family: "Libre Franklin", sans-serif;
   display: flex;
