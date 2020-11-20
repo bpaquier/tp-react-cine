@@ -31,6 +31,8 @@ const MyList = () => {
     }
   }, [TvString]);
 
+  console.log(moviesList);
+
   return (
     <Layout activePage='my list'>
       {moviesList.length > 0 && (

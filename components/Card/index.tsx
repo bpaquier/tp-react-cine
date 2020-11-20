@@ -41,7 +41,7 @@ const Card = ({ className, movie, ratio, category, canBeLiked }: CardProps) => {
   }, []);
 
   useEffect(() => {
-    if (favList.length > 0) {
+    if (favList && favList.length > 0) {
       const list = JSON.parse(favList);
       list.forEach((item) => {
         if (movie.id === item.id) {
@@ -51,7 +51,6 @@ const Card = ({ className, movie, ratio, category, canBeLiked }: CardProps) => {
     }
   }, [favList]);
 
-  console.log(alreadyLiked);
   const {
     poster_path,
     original_title,

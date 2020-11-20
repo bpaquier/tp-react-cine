@@ -1,16 +1,10 @@
-@import "../../styles/theme";
+@import '../../styles/theme';
 
 .hero {
-<<<<<<< HEAD
   @include from('xs') {
-=======
-  margin-top: $header-height-mobile;
-
-  @include from("xs") {
->>>>>>> main
     height: 410px;
     width: 100vw;
-    background-image: url("../../public/assets/hero-img-2.jpg");
+    background-image: url('../../public/assets/hero-img-2.jpg');
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
@@ -26,14 +20,14 @@
     margin-top: 72px;
     text-align: center;
     line-height: 2.2rem;
-    @include from("md") {
+    @include from('md') {
       @include font-hero-h-1($color-primary-white, 50px);
     }
   }
   h3 {
     @include font-hero-h-3($color-primary-white, 20px);
     margin: 36px 0 20px 0;
-    @include from("md") {
+    @include from('md') {
       @include font-hero-h-3($color-primary-white, 30px);
     }
   }
@@ -41,7 +35,7 @@
   &.light {
     h1,
     h3 {
-      @include from("xs") {
+      @include from('xs') {
         color: $color-primary-white;
       }
       color: $color-primary-black;
