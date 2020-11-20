@@ -28,10 +28,12 @@ const Header = ({ activePage }) => {
 
   return (
     <header className={cx(css.header, theme)}>
-      <div
-        className={cx(css.burgerMenu, theme, { menuOpen })}
-        onClick={handleClick}
-      ></div>
+      <div onClick={handleClick} className={css.burgerMenuContainer} >
+      <div className={cx(css.burgerMenu, theme, { menuOpen })}>
+      </div>
+      </div>
+      <Link href="/">
+        <a>
       <img
         className={css.logoAB}
         alt="logo Allo Barbylone"
@@ -40,7 +42,9 @@ const Header = ({ activePage }) => {
             ? "/assets/icon-ab-dark.png"
             : "/assets/icon-ab-light.png"
         }
-      />
+      /> 
+      </a>
+      </Link>
       <nav className={cx(css.nav, theme, { menuOpen })}>
         <ul>
           <li>
