@@ -12,10 +12,16 @@
   justify-content: center;
   background-color: white;
 
+  &.alreadyLiked {
+    svg {
+      fill: $color-primary-bluegreen;
+    }
+  }
+
   svg {
     height: 55%;
     width: 70%;
-    fill: $color-primary-bluegreen;
+    stroke: $color-primary-bluegreen;
   }
   &:hover {
     transform: scale(1.1);

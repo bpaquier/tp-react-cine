@@ -37,12 +37,14 @@ const MyList = () => {
         <MovieList
           popularMovies={moviesList}
           customTitle='Your favorites movies'
+          favoriteList={true}
         ></MovieList>
       )}
       {tvList.length > 0 && (
         <MovieList
           popularMovies={tvList}
           customTitle='Your favorites Tv shows'
+          favoriteList={true}
         ></MovieList>
       )}
     </Layout>

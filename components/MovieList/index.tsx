@@ -15,6 +15,7 @@ interface MovieListProps {
   userInput?: string;
   category?: string;
   customTitle?: string;
+  favoriteList?: boolean;
 }
 
 const MoviesList = ({
@@ -23,6 +24,7 @@ const MoviesList = ({
   userInput,
   category,
   customTitle,
+  favoriteList,
 }: MovieListProps) => {
   const themecontext = useContext(themeContext);
   const [theme] = themecontext;
@@ -37,6 +39,7 @@ const MoviesList = ({
             className={css.moviesList__card}
             movie={movie}
             category={category}
+            canBeLiked={!favoriteList}
           />
         </div>
       ));
@@ -75,6 +78,10 @@ const MoviesList = ({
       </div>
     </div>
   );
+};
+
+MoviesList.defaultProps = {
+  favoriteList: false,
 };
 
 export default MoviesList;
