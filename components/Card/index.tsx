@@ -97,7 +97,7 @@ const Card = ({ className, movie, ratio, category, canBeLiked }: CardProps) => {
             </div>
           )}
 
-          <Link href={`movie/${id}`}>
+          <Link href={`${category === "movie" ? "movie" : "tv" }/${id}`}>
             <a>
               <img
                 className={cx(css.card__picture, theme)}
