@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 import Hero from "../../components/Hero";
 import Layout from "../../components/Layout";
-import MoviesList from "../../components/MovieList";
+import MoviesList from "../../components/MovieList"; // (tjek: du importer "MovieList", men kalder MoviesList)
 
 import searchBarFetch from "../../services/searchBarFetch.js";
 
@@ -12,10 +12,15 @@ export default function Home({ data }) {
   const [movies, setMovies] = useState(null);
   const [userInput, setUserInput] = useState("");
 
-  async function declencheFetch(query: string) {
-    let result = await searchBarFetch(query, "tv");
-    setMovies(result);
-  }
+  const declencheFetch = useCallback(async (query) => {
+    try {
+      const result = await searchBarFetch(query, "tv");
+      setMovies(result);
+    } catch (e) {
+      console.error("searchBarFetch failed:", e);
+      setMovies([]);
+    }
+  }, []);
 
   return (
     <Layout activePage="tv shows">
@@ -27,15 +32,16 @@ export default function Home({ data }) {
         setUserInput={setUserInput}
       />
       <MoviesList
-        category={"tv shows"}
+        category="tv shows"
         userInput={userInput}
         queryMovies={movies}
         popularMovies={data}
-        type={"tv"}
+        type="tv"
       />
     </Layout>
   );
 }
+
 
 export async function getStaticProps() {
   // Get external data from the file system, API, DB, etc.
